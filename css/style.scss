@@ -1,0 +1,149 @@
+
+
+nav
+{
+    #logo
+    {
+        margin-left: 25%;
+        color: rgb(228, 153, 55);
+    }
+
+    a
+    {
+        margin: 0 20px 0 20px;
+    }
+
+    .search
+    {
+        position: relative;
+
+        #searchOptions
+        {
+            position: absolute;
+            display: none;
+            width: 230px;
+            top: 38px;
+            list-style: none;
+            background-color: gray;
+            padding: 0;
+
+            button
+            {
+                width: 100%;
+                border: 1px solid #fff;
+                background-color: rgb(29, 113, 209);
+
+                &:hover
+                {
+                    opacity: .5;
+                }
+            }
+        }
+
+        #searchBar
+        {
+            border-bottom-right-radius: 0px;
+            border-top-right-radius: 0px;
+        }
+    }
+
+    #searchIcon
+    {
+        border-radius: 0;
+    }
+
+    #signUp, #logIn
+    {
+        margin-left: 20px;
+        
+    }
+}
+
+main
+{
+    width: 500px;
+    height: 500px;
+
+    img
+    {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+footer
+{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    height: 250px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+
+    #logoFooter
+    {
+        position: absolute;
+        bottom: 150px;
+        left: 375px;
+        font-size: 40px;
+        color: rgb(228, 153, 55);
+        text-decoration: none;
+    }
+
+    .socialMedias
+    {
+        position: absolute;
+        bottom: 80px;
+        left: 300px;
+        display: flex;
+        flex-direction: row;
+        
+        li
+        {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+            border: 3px solid #fff;
+            border-radius: 100px;
+            margin: 10px 0 0 20px;
+
+            &:hover > a
+            {
+                transform: scale(1.5);
+                transition: .5s;
+            }
+        }
+    }
+
+    .foot
+    {
+        position: absolute;
+        bottom: 50px;
+        right: 350px;
+        display: flex;
+        flex-direction: row;
+
+        ul
+        {
+            list-style: none;
+            margin-left: 30px;
+
+            li
+            {
+                margin-top: 15px;
+            }
+        }
+
+        a
+        {
+            color: rgb(255, 255, 255);
+        }
+    }
+}
+
