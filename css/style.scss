@@ -1,10 +1,8 @@
-
-
 nav
 {
     #logo
     {
-        margin-left: 25%;
+        margin-left: 15%;
         color: rgb(228, 153, 55);
     }
 
@@ -31,7 +29,7 @@ nav
             {
                 width: 100%;
                 border: 1px solid #fff;
-                background-color: rgb(29, 113, 209);
+                background-color: rgb(73, 129, 194);
 
                 &:hover
                 {
@@ -59,35 +57,270 @@ nav
     }
 }
 
-main
+.content
 {
-    width: 500px;
-    height: 500px;
-
-    img
-    {
-        width: 100px;
-        height: 100px;
-    }
-}
-
-footer
-{
-    position: absolute;
-    bottom: 0;
-    display: flex;
     width: 100%;
-    height: 250px;
+    height: 2000px;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: black;
+
+    .modal-content
+    {
+        h5, button
+        {
+            margin-left: 40%;
+        }
+
+        #closeBtn
+        {
+            border-radius: 3px;
+            background-color: rgb(160, 28, 28);
+            color: #fff;
+            border: none;
+        }
+    }
+
+    .grid
+    {
+        width: 50%;
+        height: 600px;
+        border: 3px solid #000;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-template-rows: repeat(2,1fr);;
+
+        img
+        {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+
+            &:hover
+            {
+                opacity: .75;
+            }
+        }
+
+        img:first-child
+        {
+            grid-column: 1/3;
+            grid-row: 1/3;
+        }
+
+        img:nth-child(4)
+        {
+            grid-column: span 2;
+        }
+    }
+
+    .users
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .userGrid
+        {
+            width: auto;
+            height: 250px;
+            margin: 100px 0 20px 0;
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            grid-template-rows: repeat(2,1fr);
+            grid-gap: 30px;
+        }
+
+        button
+        {
+            width: 150px;
+            height: 30px;
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        li
+        {
+            list-style: none;
+            text-align: center;
+
+            .imgUser
+            {
+                position: relative;
+
+                i
+                {
+                    display: none;
+                    position: absolute;
+                    font-size: 15px;
+                    color:rgb(233, 99, 45);
+                    cursor: pointer;
+                }
+    
+                #playIcon
+                {
+                    color:rgb(216, 199, 51);
+                    font-size: 30px;
+                    left: 45%;
+                    top: 35%;
+                }
+    
+                #starIcon
+                {
+                    left: 35%;
+                    bottom: 5px;
+                }
+    
+                #moreIcon
+                {
+                    font-size: 20px;
+                    left: 55%;
+                    bottom: 3px;
+                }
+    
+                img
+                {
+                    width: 150px;
+                    height: 100px;
+                }
+    
+                &:hover
+                {
+                    opacity: .75;
+                    transition: .5s;
+    
+                    i
+                    {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    .music
+    {
+        position: relative;
+        width: 400px;
+        height: 100px;
+        margin-top: 40px;
+        background-color: chocolate;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+
+        .progress
+        {
+            margin: 20px 0 0 40px;
+            width: 80%;
+        }
+
+        .musicControl
+        {
+            margin: 10px 5px 0 5px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            i
+            {
+                cursor: pointer;
+            }
+
+            #pauseMusic, #playMusic, #pauseMusic2, #playMusic2, #pauseMusic3, #playMusic3
+            {
+                position: absolute;
+                left: 10%;
+                top: 60%;
+            }
+
+            #volumeMusic, #volumeMusic2, #volumeMusic3
+            {
+                position: absolute;
+                left: 20%;
+                top: 60%;
+
+                &:hover
+                {
+                    #volume
+                    {
+                        display: block;
+                    }
+                }
+            }
+
+            #volume, #volume2, #volume3
+            {
+                position: absolute;
+                left: 27%;
+                top: 60%;
+                display: none;
+            }
+
+            #currentTime, #currentTime2, #currentTime3
+            {
+                position: absolute;
+                right: 25%;
+                top: 55%;
+            }
+
+            #totalTime, #totalTime2, #totalTime3
+            {
+                position: absolute;
+                right: 13%;
+                top: 55%;
+            }
+            
+        }
+    }
+    
+    .banner
+    {
+        width: 75%;
+        margin-top: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 50px;
+
+        .card-body
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        i
+        {
+            font-size: 40px;
+            margin: 10px 0 10px 0;
+        }
+    }
+}
+
+
+footer
+{
+    position: relative;
+    width: 100%;
+    height: 200px;
+    bottom: 0;
+    background-color: rgb(20, 20, 20);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     #logoFooter
     {
         position: absolute;
-        bottom: 150px;
-        left: 375px;
+        bottom: 100px;
+        left: 200px;
         font-size: 40px;
         color: rgb(228, 153, 55);
         text-decoration: none;
@@ -96,8 +329,8 @@ footer
     .socialMedias
     {
         position: absolute;
-        bottom: 80px;
-        left: 300px;
+        bottom: 30px;
+        left: 125px;
         display: flex;
         flex-direction: row;
         
@@ -124,8 +357,8 @@ footer
     .foot
     {
         position: absolute;
-        bottom: 50px;
-        right: 350px;
+        bottom: 0px;
+        right: 175px;
         display: flex;
         flex-direction: row;
 
@@ -146,4 +379,5 @@ footer
         }
     }
 }
+
 
