@@ -14,6 +14,7 @@ nav
     .search
     {
         position: relative;
+        margin: 0 0 0 10px;
 
         #searchOptions
         {
@@ -52,15 +53,14 @@ nav
 
     #signUp, #logIn
     {
-        margin-left: 20px;
-        
+        margin: 10px 0 10px 10px;
+        width: 120px;
     }
 }
 
 .content
 {
     width: 100%;
-    height: 2000px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -85,11 +85,11 @@ nav
     .grid
     {
         width: 50%;
-        height: 600px;
-        border: 3px solid #000;
+        height: 500px;
+        margin: 30px 0 70px 0;
         display: grid;
-        grid-template-columns: repeat(3,1fr);
-        grid-template-rows: repeat(2,1fr);;
+        grid-template-columns: repeat(3,.5fr);
+        grid-template-rows: repeat(2,.5fr);;
 
         img
         {
@@ -112,7 +112,8 @@ nav
 
         img:nth-child(4)
         {
-            grid-column: span 2;
+            height: 50%;
+            grid-column: span 3;
         }
     }
 
@@ -125,12 +126,12 @@ nav
         .userGrid
         {
             width: auto;
-            height: 250px;
-            margin: 100px 0 20px 0;
+            height: 450px;
+            margin: 0 0 20px 0;
             display: grid;
-            grid-template-columns: repeat(5,1fr);
-            grid-template-rows: repeat(2,1fr);
-            grid-gap: 30px;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(3,1fr);
+            grid-gap: 40px;
         }
 
         button
@@ -205,9 +206,9 @@ nav
     .music
     {
         position: relative;
-        width: 400px;
+        width: 550px;
         height: 100px;
-        margin-top: 40px;
+        margin-top: 50px;
         background-color: chocolate;
         border-radius: 10px;
         display: flex;
@@ -281,7 +282,7 @@ nav
     .banner
     {
         width: 75%;
-        margin-top: 100px;
+        margin: 100px 0 50px 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -306,78 +307,235 @@ nav
 
 footer
 {
-    position: relative;
-    width: 100%;
-    height: 200px;
-    bottom: 0;
-    background-color: rgb(20, 20, 20);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+        position: relative;
+        width: 100%;
+        height: 200px;
+        background-color: rgb(20, 20, 20);
 
-    #logoFooter
-    {
-        position: absolute;
-        bottom: 100px;
-        left: 200px;
-        font-size: 40px;
-        color: rgb(228, 153, 55);
-        text-decoration: none;
-    }
-
-    .socialMedias
-    {
-        position: absolute;
-        bottom: 30px;
-        left: 125px;
-        display: flex;
-        flex-direction: row;
-        
-        li
+        #logoFooter
         {
-            width: 45px;
-            height: 45px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: transparent;
-            border: 3px solid #fff;
-            border-radius: 100px;
-            margin: 10px 0 0 20px;
-
-            &:hover > a
-            {
-                transform: scale(1.5);
-                transition: .5s;
-            }
+            position: absolute;
+            bottom: 100px;
+            left: 200px;
+            font-size: 40px;
+            color: rgb(228, 153, 55);
+            text-decoration: none;
         }
-    }
-
-    .foot
-    {
-        position: absolute;
-        bottom: 0px;
-        right: 175px;
-        display: flex;
-        flex-direction: row;
-
-        ul
+    
+        .socialMedias
         {
-            list-style: none;
-            margin-left: 30px;
-
+            position: absolute;
+            bottom: 30px;
+            left: 125px;
+            display: flex;
+            flex-direction: row;
+            
             li
             {
-                margin-top: 15px;
+                width: 45px;
+                height: 45px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: transparent;
+                margin: 10px 0 0 20px;
+    
+                i
+                {
+                    font-size: 16px;
+                }
+    
+                &:hover > a
+                {
+                    transform: scale(1.5);
+                    transition: .5s;
+                }
             }
         }
-
-        a
+    
+        .foot
         {
-            color: rgb(255, 255, 255);
+            position: absolute;
+            bottom: 0px;
+            right: 175px;
+            display: flex;
+            flex-direction: row;
+    
+            ul
+            {
+                list-style: none;
+                margin-left: 30px;
+    
+                li
+                {
+                    margin-top: 15px;
+                }
+            }
+    
+            a
+            {
+                color: rgb(255, 255, 255);
+            }
+        }
+}
+
+@media screen and (max-width:1028px)
+{
+    footer
+    {
+        #logoFooter
+        {
+            left: 100px;
+        }
+    
+        .socialMedias
+        {
+            left: 25px;
+        }
+    
+        .foot
+        {
+            right: 75px;
         }
     }
 }
 
 
+@media screen and (max-width:900px)
+{
+    .nav
+    {
+        #signUp, #logIn
+        {
+            margin: 10px 0 10px 0px;
+        }
+    }
+
+    .content
+    {
+        .grid
+        {
+            width: 60%;
+        }
+
+        .users
+        {
+            .userGrid
+            {
+                width: auto;
+                height: 600px;
+                margin: 0 0 20px 0;
+                grid-template-columns: repeat(3,1fr);
+                grid-template-rows: repeat(4,1fr);
+                grid-gap: 25px;
+            }
+        }
+
+        .banner
+        {
+            margin-top: 50px;
+            flex-direction: column;
+        }
+    }
+
+    footer
+    {
+        #logoFooter
+        {
+            position: unset;
+        }
+    
+        .socialMedias
+        {
+            position: unset;
+        }
+    
+        .foot
+        {
+            position: unset;
+        }
+    }
+
+}
+
+@media screen and (max-width:600px)
+{
+    .content
+    {
+        .grid
+        {
+            width: 70%;
+            height: 400px;
+        }
+
+        .users
+        {
+            .userGrid
+            {
+                width: auto;
+                height: 900px;
+                margin: 0 0 20px 0;
+                grid-template-columns: repeat(2,1fr);
+                grid-template-rows: repeat(6,1fr);
+                grid-gap: 25px;
+
+                img:nth-last-child()
+                {
+                    display: none;
+                }
+            }
+        }
+
+        .music
+        {
+            width: 450px;
+
+            .musicControl
+            {
+                margin: 10px 5px 0 5px;
+                
+                #pauseMusic, #playMusic, #pauseMusic2, #playMusic2, #pauseMusic3, #playMusic3
+                {
+                    left: 13%;
+                }
+
+                #volumeMusic, #volumeMusic2, #volumeMusic3
+                {
+                    left: 23%;
+                }
+
+                #volume, #volume2, #volume3
+                {
+                    left: 30%;
+                }
+
+                #currentTime, #currentTime2, #currentTime3
+                {
+                    right: 28%;
+                }
+
+                #totalTime, #totalTime2, #totalTime3
+                {
+                    right: 16%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:400px)
+{
+    .content
+    {
+        .grid
+        {
+            width: 80%;
+            height: 250px;
+        }
+
+        .music
+        {
+            width: 250px;
+        }
+    }
+}

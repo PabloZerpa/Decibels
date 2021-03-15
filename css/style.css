@@ -9,6 +9,7 @@ nav a {
 
 nav .search {
   position: relative;
+  margin: 0 0 0 10px;
 }
 
 nav .search #searchOptions {
@@ -41,12 +42,12 @@ nav #searchIcon {
 }
 
 nav #signUp, nav #logIn {
-  margin-left: 20px;
+  margin: 10px 0 10px 10px;
+  width: 120px;
 }
 
 .content {
   width: 100%;
-  height: 2000px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -75,14 +76,14 @@ nav #signUp, nav #logIn {
 
 .content .grid {
   width: 50%;
-  height: 600px;
-  border: 3px solid #000;
+  height: 500px;
+  margin: 30px 0 70px 0;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
-  -ms-grid-rows: (1fr)[2];
-      grid-template-rows: repeat(2, 1fr);
+  -ms-grid-columns: (0.5fr)[3];
+      grid-template-columns: repeat(3, 0.5fr);
+  -ms-grid-rows: (0.5fr)[2];
+      grid-template-rows: repeat(2, 0.5fr);
 }
 
 .content .grid img {
@@ -107,7 +108,8 @@ nav #signUp, nav #logIn {
 }
 
 .content .grid img:nth-child(4) {
-  grid-column: span 2;
+  height: 50%;
+  grid-column: span 3;
 }
 
 .content .users {
@@ -125,15 +127,15 @@ nav #signUp, nav #logIn {
 
 .content .users .userGrid {
   width: auto;
-  height: 250px;
-  margin: 100px 0 20px 0;
+  height: 450px;
+  margin: 0 0 20px 0;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[5];
-      grid-template-columns: repeat(5, 1fr);
-  -ms-grid-rows: (1fr)[2];
-      grid-template-rows: repeat(2, 1fr);
-  grid-gap: 30px;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: (1fr)[3];
+      grid-template-rows: repeat(3, 1fr);
+  grid-gap: 40px;
 }
 
 .content .users button {
@@ -203,9 +205,9 @@ nav #signUp, nav #logIn {
 
 .content .music {
   position: relative;
-  width: 400px;
+  width: 550px;
   height: 100px;
-  margin-top: 40px;
+  margin-top: 50px;
   background-color: chocolate;
   border-radius: 10px;
   display: -webkit-box;
@@ -277,7 +279,7 @@ nav #signUp, nav #logIn {
 
 .content .banner {
   width: 75%;
-  margin-top: 100px;
+  margin: 100px 0 50px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -313,21 +315,7 @@ footer {
   position: relative;
   width: 100%;
   height: 200px;
-  bottom: 0;
   background-color: #141414;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 footer #logoFooter {
@@ -365,9 +353,11 @@ footer .socialMedias li {
       -ms-flex-align: center;
           align-items: center;
   background-color: transparent;
-  border: 3px solid #fff;
-  border-radius: 100px;
   margin: 10px 0 0 20px;
+}
+
+footer .socialMedias li i {
+  font-size: 16px;
 }
 
 footer .socialMedias li:hover > a {
@@ -401,5 +391,103 @@ footer .foot ul li {
 
 footer .foot a {
   color: white;
+}
+
+@media screen and (max-width: 1028px) {
+  footer #logoFooter {
+    left: 100px;
+  }
+  footer .socialMedias {
+    left: 25px;
+  }
+  footer .foot {
+    right: 75px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .nav #signUp, .nav #logIn {
+    margin: 10px 0 10px 0px;
+  }
+  .content .grid {
+    width: 60%;
+  }
+  .content .users .userGrid {
+    width: auto;
+    height: 600px;
+    margin: 0 0 20px 0;
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    -ms-grid-rows: (1fr)[4];
+        grid-template-rows: repeat(4, 1fr);
+    grid-gap: 25px;
+  }
+  .content .banner {
+    margin-top: 50px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  footer #logoFooter {
+    position: unset;
+  }
+  footer .socialMedias {
+    position: unset;
+  }
+  footer .foot {
+    position: unset;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .content .grid {
+    width: 70%;
+    height: 400px;
+  }
+  .content .users .userGrid {
+    width: auto;
+    height: 900px;
+    margin: 0 0 20px 0;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    -ms-grid-rows: (1fr)[6];
+        grid-template-rows: repeat(6, 1fr);
+    grid-gap: 25px;
+  }
+  .content .users .userGrid img:nth-last-child() {
+    display: none;
+  }
+  .content .music {
+    width: 450px;
+  }
+  .content .music .musicControl {
+    margin: 10px 5px 0 5px;
+  }
+  .content .music .musicControl #pauseMusic, .content .music .musicControl #playMusic, .content .music .musicControl #pauseMusic2, .content .music .musicControl #playMusic2, .content .music .musicControl #pauseMusic3, .content .music .musicControl #playMusic3 {
+    left: 13%;
+  }
+  .content .music .musicControl #volumeMusic, .content .music .musicControl #volumeMusic2, .content .music .musicControl #volumeMusic3 {
+    left: 23%;
+  }
+  .content .music .musicControl #volume, .content .music .musicControl #volume2, .content .music .musicControl #volume3 {
+    left: 30%;
+  }
+  .content .music .musicControl #currentTime, .content .music .musicControl #currentTime2, .content .music .musicControl #currentTime3 {
+    right: 28%;
+  }
+  .content .music .musicControl #totalTime, .content .music .musicControl #totalTime2, .content .music .musicControl #totalTime3 {
+    right: 16%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .content .grid {
+    width: 80%;
+    height: 250px;
+  }
+  .content .music {
+    width: 250px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
