@@ -1,0 +1,259 @@
+.userContent {
+  margin: 0;
+  padding: 0;
+  width: 400px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  gap: 100px;
+}
+
+.userContent .loadData {
+  width: 300px;
+  height: 375px;
+  margin: 20px 0 0 50px;
+  background-color: #818181;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.userContent .loadData h6 {
+  font-weight: bolder;
+  display: inline;
+}
+
+.userContent .loadData input[type="text"] {
+  width: 200px;
+  height: 25px;
+  border-radius: 5px;
+  border: none;
+}
+
+.userContent .loadData select {
+  border-radius: 5px;
+  border: none;
+  margin: 10px 0 20px 0;
+  width: 200px;
+}
+
+.userContent .loadData .title {
+  border-radius: 5px;
+  border: 2px solid #000;
+  padding: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #b3b3b3;
+}
+
+.userContent .loadData .data {
+  border-radius: 5px;
+  border: 2px solid #000;
+  padding: 8px;
+  margin: 10px 0 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #b3b3b3;
+}
+
+.userContent .loadData .data input[type="file"] {
+  display: none;
+}
+
+.userContent .loadData #addBtn {
+  width: 208px;
+  height: 25px;
+  background-color: #b3b3b3;
+  border: 10px solid #000;
+  text-align: center;
+  border-radius: 5px;
+  border: none;
+}
+
+.userContent .loadData #formAudio {
+  display: none;
+}
+
+.userContent .allList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.userContent .allList .list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.userContent .allList .list .playlistTitle, .userContent .allList .list .playlistInput {
+  position: absolute;
+  top: 12%;
+  color: #000;
+  border: none;
+  font-size: 25px;
+}
+
+.userContent .allList .list .playlistInput {
+  display: none;
+  text-align: center;
+  background-color: #a5a5a5;
+}
+
+.userContent .allList .list .playlist {
+  width: 500px;
+  height: 300px;
+  background-color: #818181;
+  border-radius: 5px;
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.userContent .allList .list .playlist .music:first-child {
+  margin-top: 80px;
+}
+
+.userContent .allList .list .playlist .music {
+  position: relative;
+  width: 450px;
+  height: 200px;
+  margin-top: 40px;
+  background-color: #e49937;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 5px 5px 5px #000;
+          box-shadow: 5px 5px 5px #000;
+}
+
+.userContent .allList .list .playlist .music .progress {
+  margin-top: 20px;
+  width: 80%;
+}
+
+.userContent .allList .list .playlist .music .musicControl {
+  margin: 5px 5px 0 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.userContent .allList .list .playlist .music .musicControl i {
+  cursor: pointer;
+}
+
+.userContent .allList .list .playlist .music .musicControl .redoMusic {
+  position: absolute;
+  bottom: 35%;
+  left: 15%;
+}
+
+.userContent .allList .list .playlist .music .musicControl .pauseMusic, .userContent .allList .list .playlist .music .musicControl .playMusic {
+  position: absolute;
+  bottom: 35%;
+  left: 10%;
+}
+
+.userContent .allList .list .playlist .music .musicControl .volumeControl:hover > .volume {
+  display: block;
+}
+
+.userContent .allList .list .playlist .music .musicControl .volumeMusic, .userContent .allList .list .playlist .music .musicControl .volumeMute {
+  position: absolute;
+  bottom: 35%;
+  left: 25%;
+}
+
+.userContent .allList .list .playlist .music .musicControl .volume {
+  display: none;
+  position: absolute;
+  bottom: 35%;
+  left: 29%;
+}
+
+.userContent .allList .list .playlist .music .musicControl .timeMusic {
+  position: absolute;
+  bottom: 23%;
+  left: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.userContent .allList .list .playlist .music #deleteMusic, .userContent .allList .list .playlist .music #editMusic {
+  width: 80px;
+  height: 30px;
+  position: absolute;
+  bottom: 5%;
+  left: 27.5%;
+}
+
+.userContent .allList .list .playlist .music #editMusic {
+  left: 55%;
+}
+/*# sourceMappingURL=user.css.map */

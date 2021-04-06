@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg" href="./css/headphones-alt-solid.svg" sizes="any">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <title>User</title>
+</head>
+<body>
+
+    <header>
+        <!-------------------------- NAVEGATION -------------------------->
+          <nav class="navbar navbar-expand-lg navbar sticky-top navbar navbar-dark bg-dark">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="index.html" id="logo"><i class="fas fa-headphones-alt"></i> Decibels</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Discover</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Playlist</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Upload</a>
+                    </li>
+                  </ul>
+  
+                  <form class="d-flex">
+                  <div class="search">
+                      <input class="form-control me-2" id="searchBar" type="search" placeholder="Search" aria-label="Search">
+                      <ul id="searchOptions">
+                        <button style="background-color: rgb(248, 234, 109);"><i class="fas fa-bolt"></i> Electro</button>
+                        <button style="background-color: rgb(238, 152, 39);"><i class="fas fa-leaf"></i> Ambient</button>
+                        <button style="background-color: rgb(214, 29, 29);"><i class="fas fa-drum"></i> Rap</button>
+                        <button style="background-color: rgb(223, 55, 147);"><i class="fas fa-compact-disc"></i> Pop</button>
+                        <button style="background-color: rgb(184, 38, 228);"><i class="fas fa-guitar"></i> Rock</button>
+                        <button style="background-color: rgb(37, 126, 228);"><i class="fas fa-skull"></i> Metal</button>
+                      </ul>
+                  </div>
+                    <button class="btn btn-outline-warning" id="searchIcon" type="submit"><i class="fas fa-search" style="color: #fff;"></i></button>
+                  </form>
+
+                  <button type="submit" class="btn btn-primary" id="formOut">Log Out</button>
+  
+                </div>
+              </div>
+            </nav>
+      </header>
+
+      <div class="userContent">
+        <div class="loadData">
+          <div>
+            <select id="selectList">
+              <option value="">Select a Playlist</option>
+              <option value="title">Title</option>
+              <option value="create">Create a list</option>
+            </select>
+          </div>
+
+          <form id="formAudio">
+            <div class="title">
+              <h6>Title</h6>
+              <input type="text" id="title" name="title" required autofocus/>
+            </div>
+    
+            <div class="data">
+              <input type="hidden" name="MAX_FILE_SIZE" value="4194304" />
+              <label for="audioFile" class="audioLabel" id="audioLabel">
+                <h6>Select file</h6>
+                <i class="fa fa-cloud-upload-alt"></i>
+              </label>
+              <input type="file" id="audioFile" name="audioFile" accept="audio/mpeg"/>
+    
+              <p>Or</p>
+    
+              <h6>Enter a URL</h6>
+              <input type="text" id="url" name="url" accept="audio/mpeg"/>
+            </div>
+            
+            <input type="button" id="addBtn" value="Add">
+          </form>
+          
+        </div>
+
+        <div class="allList">
+          <div class="list">
+            <input type="text" class="playlistInput" id="playlistInput">
+            <p class="playlistTitle" id="playlistTitle">Title</p>
+            <div class="playlist" id="playlist"></div>
+          </div>
+          </div>
+        </div>
+
+      </div>
+      
+
+    <!-- FIREBASE -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyCgIXWF93apX6no1WF2K9ArPbnM0ftIBzQ",
+        authDomain: "decibels-85767.firebaseapp.com",
+        projectId: "decibels-85767",
+        storageBucket: "decibels-85767.appspot.com",
+        messagingSenderId: "372223922058",
+        appId: "1:372223922058:web:dec2ec24b4203dae88c273",
+        measurementId: "G-N8P867DJEQ"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+      firebase.analytics();
+    </script>
+
+    <script type="module" src="./js/user.js"></script>
+
+</body>
+</html>

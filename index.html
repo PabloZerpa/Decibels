@@ -52,12 +52,8 @@
                   <button class="btn btn-outline-warning" id="searchIcon" type="submit"><i class="fas fa-search" style="color: #fff;"></i></button>
                 </form>
 
-                <button type="button" class="btn btn-warning" id="logIn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Log In</button>
-                <button type="button" class="btn btn-secondary" id="signUp" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Sign Up</button>
-
-                  <div class="modal-body" id="signForm" style="display: none;">
-                    
-                  </div>
+                <button type="button" class="btn btn-warning" id="signUp" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Sign Up</button>
+                <button type="button" class="btn btn-secondary" id="logIn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Log In</button>
 
               </div>
             </div>
@@ -67,45 +63,60 @@
     <!-------------------------- MAIN CONTENT -------------------------->
     <div class="content">
 
+      <div class="container p-4">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <ul class="list-group posts" id="post">
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <!-------------------------- MODAL LOGIN -------------------------->
       <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="formTitle"></h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeBtn">X</button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeBtnForm">X</button>
             </div>
             <div class="modal-body">
-              <form id="formLog">
+              <form id="formSign">
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Name</label>
-                  <input type="text" class="form-control" id="nameLogin" aria-describedby="emailHelp">
+                  <input type="text" class="form-control" id="nameSign" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Email address</label>
-                  <input type="email" class="form-control" id="emailLogin" aria-describedby="emailHelp">
+                  <input type="email" class="form-control" id="emailSign" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="passLogin">
+                  <input type="password" class="form-control" id="passSign">
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Reenter Password</label>
-                  <input type="password" class="form-control" id="repassLogin">
+                  <input type="password" class="form-control" id="repassSign">
                 </div>
-                <button type="submit" class="btn btn-primary" id="registerBtn">Register</button>
+                <button type="submit" class="btn btn-primary btn-block" id="registerBtn">Sign Up</button>
+                <button type="submit" class="btn btn-primary btn-block" id="googleRegister">Sign Up with Google</button>
+                <button type="submit" class="btn btn-primary btn-block" id="microRegister">Sign Up with Microsoft</button>
+                <button type="submit" class="btn btn-primary btn-block" id="appleRegister">Sign Up with Apple</button>
               </form>
 
-              <form id="formSign" style="display: none;">
+              <form id="formLog" style="display: none;">
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Email address</label>
-                  <input type="email" class="form-control" id="emailLogin" aria-describedby="emailHelp">
+                  <input type="email" class="form-control" id="emailLog" aria-describedby="emailHelp" required>
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="passLogin">
+                  <input type="password" class="form-control" id="passLog" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Enter</button>
+                <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                <button type="submit" class="btn btn-primary btn-block" id="googleBtn">Log In with Google</button>
+                <button type="submit" class="btn btn-primary btn-block" id="microBtn">Log In with Microsoft</button>
+                <button type="submit" class="btn btn-primary btn-block" id="appleBtn">Log In with Apple</button>
               </form>
             </div>
           </div>
@@ -244,12 +255,20 @@
             </audio>
             <div class="progress">
               <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+              <div id="duracion">
+                <span></span>
+                <div></div>
+              </div>
             </div>
             <div class="musicControl">
-              <i class="fas fa-play" id="playMusic" onclick="playAudio(track1,playMusic,pauseMusic)"></i>
+              <i class="fas fa-play" id="playMusic" onclick="playAudio(track1,playMusic,pauseMusic,progress,currentTime)"></i>
               <i class="fas fa-pause" id="pauseMusic" onclick="pauseAudio(track1,playMusic,pauseMusic)" style="display: none;"></i>
-              <i class="fas fa-volume-up" id="volumeMusic" onclick="volumeAudio(volume)"></i>
-              <input type="range" name="volume" id="volume" onclick="volumeLevel(track1,volume)" min="0" max="1" step="0.01" value="0.5">
+              <i class="fas fa-redo-alt" id="redoMusic" onclick="redoAudio(track1)"></i>
+              <div class="volumeControls">
+                <i class="fas fa-volume-up" id="volumeMusic" onclick="volumeAudio(track1,1,volumeMusic,volumeMute)"></i>
+                <i class="fas fa-volume-mute" id="volumeMute" onclick="volumeMute(track1,1,volumeMusic,volumeMute)" style="display: none;"></i>
+                <input type="range" name="volume" id="volume" onclick="volumeLevel(track1,volume)" min="0" max="1" step="0.01" value="0.5">
+              </div>
               <p id="currentTime">00:00</p>
               <p id="totalTime">/00:00</p>
             </div>
@@ -261,13 +280,17 @@
             Your browser does not support the audio element.
             </audio>
             <div class="progress">
-              <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+              <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress2" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
             </div>
             <div class="musicControl">
-              <i class="fas fa-play" id="playMusic2" onclick="playAudio(track2,playMusic2,pauseMusic2)"></i>
+              <i class="fas fa-play" id="playMusic2" onclick="playAudio(track2,playMusic2,pauseMusic2,progress2,currentTime2)"></i>
               <i class="fas fa-pause" id="pauseMusic2" onclick="pauseAudio(track2,playMusic2,pauseMusic2)" style="display: none;"></i>
-              <i class="fas fa-volume-up" id="volumeMusic2" onclick="volumeAudio(volume2)"></i>
-              <input type="range" name="volume" id="volume2" onclick="volumeLevel(track2,volume2)" min="0" max="1" step="0.01" value="0.5">
+              <i class="fas fa-redo-alt" id="redoMusic2" onclick="redoAudio(track2)"></i>
+              <div class="volumeControls">
+                <i class="fas fa-volume-up" id="volumeMusic2" onclick="volumeAudio(track2,2,volumeMusic2,volumeMute2)"></i>
+                <i class="fas fa-volume-mute" id="volumeMute2" onclick="volumeMute(track2,2,volumeMusic2,volumeMute2)" style="display: none;"></i>
+                <input type="range" name="volume" id="volume2" onclick="volumeLevel(track2,volume2)" min="0" max="1" step="0.01" value="0.5">
+              </div>
             <p id="currentTime2">00:00</p>
             <p id="totalTime2">/00:00</p>
             </div>
@@ -279,13 +302,17 @@
             Your browser does not support the audio element.
             </audio>
             <div class="progress">
-              <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+              <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress3" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
             </div>
             <div class="musicControl">
-              <i class="fas fa-play" id="playMusic3" onclick="playAudio(track3,playMusic3,pauseMusic3)"></i>
+              <i class="fas fa-play" id="playMusic3" onclick="playAudio(track3,playMusic3,pauseMusic3,progress3,currentTime3)"></i>
               <i class="fas fa-pause" id="pauseMusic3" onclick="pauseAudio(track3,playMusic3,pauseMusic3)" style="display: none;"></i>
-              <i class="fas fa-volume-up" id="volumeMusic3" onclick="volumeAudio(volume3)"></i>
-              <input type="range" name="volume" id="volume3" onclick="volumeLevel(track3,volume3)" min="0" max="1" step="0.01" value="0.5">
+              <i class="fas fa-redo-alt" id="redoMusic3" onclick="redoAudio(track3)"></i>
+              <div class="volumeControls">
+                <i class="fas fa-volume-up" id="volumeMusic3" onclick="volumeAudio(track3,3,volumeMusic3,volumeMute3)"></i>
+                <i class="fas fa-volume-mute" id="volumeMute3" onclick="volumeMute(track3,3,volumeMusic3,volumeMute3)" style="display: none;"></i>
+                <input type="range" name="volume" id="volume3" onclick="volumeLevel(track3,volume3)" min="0" max="1" step="0.01" value="0.5">
+              </div>
               <p id="currentTime3">00:00</p>
               <p id="totalTime3">/00:00</p>
             </div>
@@ -342,7 +369,6 @@
                 <li><a href="#">© Copyright 2021</a></li>
                 <li><a href="#">Terms of Use</a></li>
                 <li><a href="#">FAQ</a></li>
-                <li><a href="#">About Us</a></li>
               </ul>
               <ul>
                 <li><a href="#">Log In</a></li>
@@ -357,7 +383,37 @@
             </div>
         </footer>
       </div>
-    
-    <script src="./script.js"></script>
+
+    <!-- FIREBASE -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyCgIXWF93apX6no1WF2K9ArPbnM0ftIBzQ",
+        authDomain: "decibels-85767.firebaseapp.com",
+        projectId: "decibels-85767",
+        storageBucket: "decibels-85767.appspot.com",
+        messagingSenderId: "372223922058",
+        appId: "1:372223922058:web:dec2ec24b4203dae88c273",
+        measurementId: "G-N8P867DJEQ"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+      firebase.analytics();
+    </script>
+
+    <script src="./js/index.js"></script>
+
 </body>
 </html>

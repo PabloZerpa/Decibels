@@ -20,7 +20,7 @@ nav
         {
             position: absolute;
             display: none;
-            width: 230px;
+            width: 190px;
             top: 38px;
             list-style: none;
             background-color: gray;
@@ -49,12 +49,28 @@ nav
     #searchIcon
     {
         border-radius: 0;
+
+        &:hover
+        {
+            background-color: rgb(228, 153, 55);
+        }
     }
 
-    #signUp, #logIn
+    #signUp, #formOut
+    {
+        background-color: rgb(228, 153, 55);
+        border: none;
+    }
+
+    #logIn, #signUp, #formOut
     {
         margin: 10px 0 10px 10px;
         width: 120px;
+
+        &:hover
+        {
+            opacity: .6;
+        }
     }
 }
 
@@ -68,12 +84,29 @@ nav
 
     .modal-content
     {
-        h5, button
+        
+        h5
         {
             margin-left: 40%;
         }
 
-        #closeBtn
+        #googleBtn, #googleRegister
+        {
+            background-color: #fff;
+            color: gold;
+        }
+        #microBtn, #microRegister
+        {
+            background-color: #fff;
+            color: rgb(30, 93, 228);
+        }
+        #appleBtn, #appleRegister
+        {
+            background-color: #fff;
+            color: rgb(184, 17, 17);
+        }
+
+        #closeBtnForm
         {
             border-radius: 3px;
             background-color: rgb(160, 28, 28);
@@ -84,12 +117,13 @@ nav
 
     .grid
     {
-        width: 50%;
-        height: 500px;
+        width: 35%;
+        height: 470px;
         margin: 30px 0 70px 0;
         display: grid;
-        grid-template-columns: repeat(3,.5fr);
-        grid-template-rows: repeat(2,.5fr);;
+        grid-template-columns: repeat(3,.3fr);
+        grid-template-rows: repeat(2,.3fr);
+        grid-gap: 10px;
 
         img
         {
@@ -158,7 +192,7 @@ nav
                     display: none;
                     position: absolute;
                     font-size: 15px;
-                    color:rgb(233, 99, 45);
+                    color:rgb(228, 153, 55);
                     cursor: pointer;
                 }
     
@@ -209,7 +243,7 @@ nav
         width: 550px;
         height: 100px;
         margin-top: 50px;
-        background-color: chocolate;
+        background-color: rgb(228, 153, 55);;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
@@ -239,25 +273,39 @@ nav
                 top: 60%;
             }
 
-            #volumeMusic, #volumeMusic2, #volumeMusic3
+            #redoMusic, #redoMusic2, #redoMusic3
+            {
+                position: absolute;
+                left: 15%;
+                top: 60%;
+            }
+
+            .volumeControls:hover > #volume
+            {
+                display: block;
+            }
+
+            .volumeControls:hover > #volume2
+            {
+                display: block;
+            }
+
+            .volumeControls:hover > #volume3
+            {
+                display: block;
+            }
+
+            #volumeMusic, #volumeMusic2, #volumeMusic3, #volumeMute, #volumeMute2, #volumeMute3
             {
                 position: absolute;
                 left: 20%;
                 top: 60%;
-
-                &:hover
-                {
-                    #volume
-                    {
-                        display: block;
-                    }
-                }
             }
 
             #volume, #volume2, #volume3
             {
                 position: absolute;
-                left: 27%;
+                left: 23.5%;
                 top: 60%;
                 display: none;
             }
@@ -265,7 +313,7 @@ nav
             #currentTime, #currentTime2, #currentTime3
             {
                 position: absolute;
-                right: 25%;
+                right: 21.5%;
                 top: 55%;
             }
 
@@ -301,6 +349,12 @@ nav
             font-size: 40px;
             margin: 10px 0 10px 0;
         }
+
+        a
+        {
+            background-color: rgb(228, 153, 55);
+            border: none;
+        }
     }
 }
 
@@ -311,6 +365,7 @@ footer
         width: 100%;
         height: 200px;
         background-color: rgb(20, 20, 20);
+        bottom: 0;
 
         #logoFooter
         {
@@ -356,7 +411,7 @@ footer
         .foot
         {
             position: absolute;
-            bottom: 0px;
+            bottom: 50px;
             right: 175px;
             display: flex;
             flex-direction: row;
@@ -381,6 +436,15 @@ footer
 
 @media screen and (max-width:1028px)
 {
+    .content
+    {
+        .grid
+        {
+            width: 50%;
+            height: 350px;
+        }
+    }
+
     footer
     {
         #logoFooter
@@ -416,6 +480,7 @@ footer
         .grid
         {
             width: 60%;
+            height: 350px;
         }
 
         .users
@@ -440,19 +505,13 @@ footer
 
     footer
     {
-        #logoFooter
+        display: flex;
+        flex-direction: column;
+
+        #logoFooter, .socialMedias, .foot
         {
-            position: unset;
-        }
-    
-        .socialMedias
-        {
-            position: unset;
-        }
-    
-        .foot
-        {
-            position: unset;
+            position: relative;
+            bottom: 0;
         }
     }
 
@@ -465,7 +524,7 @@ footer
         .grid
         {
             width: 70%;
-            height: 400px;
+            height: 250px;
         }
 
         .users
@@ -530,7 +589,7 @@ footer
         .grid
         {
             width: 80%;
-            height: 250px;
+            height: 150px;
         }
 
         .music

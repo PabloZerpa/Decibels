@@ -1,0 +1,230 @@
+
+.userContent
+{
+    margin: 0;
+    padding: 0;
+    width: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 100px;
+
+    .loadData
+    {
+        width: 300px;
+        height: 375px;
+        margin: 20px 0 0 50px;
+        background-color: rgb(129, 129, 129);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        h6
+        {
+            font-weight: bolder;
+            display: inline;
+        }
+    
+        input[type="text"] 
+        {
+            width: 200px;
+            height: 25px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        select
+        {
+            border-radius: 5px;
+            border: none;
+            margin: 10px 0 20px 0;
+            width: 200px;
+        }
+    
+        .title
+        {
+            border-radius: 5px;
+            border: 2px solid #000;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(179, 179, 179);
+        }
+    
+        .data
+        {
+            border-radius: 5px;
+            border: 2px solid #000;
+            padding: 8px;
+            margin: 10px 0 10px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(179, 179, 179);
+    
+            input[type="file"] 
+            {
+                display: none;
+            }
+        }
+    
+        #addBtn
+        {
+            width: 208px;
+            height: 25px;
+            background-color: rgb(179, 179, 179);
+            border: 10px solid #000;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+        }
+
+        #formAudio
+        {
+            display: none;
+        }
+    }
+
+    .allList
+    {
+        display: flex;
+        align-items: center;
+
+        .list
+        {
+            display: flex;
+            align-items: center;
+
+            .playlistTitle, .playlistInput
+            {
+                position: absolute;
+                top: 12%;
+                color: #000;
+                border: none;
+                font-size: 25px;
+            }
+    
+            .playlistInput
+            {
+                display: none;
+                text-align: center;
+                background-color: rgb(165, 165, 165);
+            }
+            
+            .playlist
+            {
+                width: 500px;
+                height: 300px;
+                background-color: rgb(129, 129, 129);
+                border-radius: 5px;
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+    
+                .music:first-child
+                {
+                    margin-top: 80px;
+                }
+        
+                .music
+                {
+                    position: relative;
+                    width: 450px;
+                    height: 200px;
+                    margin-top: 40px;
+                    background-color: rgb(228, 153, 55);
+                    border-radius: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    box-shadow: 5px 5px 5px#000;
+                      
+                    .progress
+                    {
+                        margin-top: 20px;
+                        width: 80%;
+                    }
+                    
+                    .musicControl
+                    {
+                        margin: 5px 5px 0 5px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                
+                        i
+                        {
+                            cursor: pointer;
+                        }
+                        
+                        .redoMusic
+                        {
+                            position: absolute;
+                            bottom: 35%;
+                            left: 15%;
+                        }
+                        
+                        .pauseMusic, .playMusic
+                        {
+                            position: absolute;
+                            bottom: 35%;
+                            left: 10%;
+                        }
+                
+                        .volumeControl:hover > .volume
+                        {
+                            display: block;
+                        }
+                
+                        
+                        .volumeMusic, .volumeMute
+                        {
+                            position: absolute;
+                            bottom: 35%;
+                            left: 25%;
+                        }
+                        
+                        .volume
+                        {
+                            display: none;
+                            position: absolute;
+                            bottom: 35%;
+                            left: 29%;
+                        }
+                        
+                        .timeMusic
+                        {
+                            position: absolute;
+                            bottom: 23%;
+                            left: 70%;
+                            display: flex;
+                        }
+            
+                    }
+                    
+                    #deleteMusic, #editMusic
+                    {
+                        width: 80px;
+                        height: 30px;
+                        position: absolute;
+                        bottom: 5%;
+                        left: 27.5%;
+                    }
+                    
+                    #editMusic
+                    {
+                        left: 55%;
+                    }
+                }
+            }
+
+        }
+
+    }
+}

@@ -15,7 +15,7 @@ nav .search {
 nav .search #searchOptions {
   position: absolute;
   display: none;
-  width: 230px;
+  width: 190px;
   top: 38px;
   list-style: none;
   background-color: gray;
@@ -41,9 +41,22 @@ nav #searchIcon {
   border-radius: 0;
 }
 
-nav #signUp, nav #logIn {
+nav #searchIcon:hover {
+  background-color: #e49937;
+}
+
+nav #signUp, nav #formOut {
+  background-color: #e49937;
+  border: none;
+}
+
+nav #logIn, nav #signUp, nav #formOut {
   margin: 10px 0 10px 10px;
   width: 120px;
+}
+
+nav #logIn:hover, nav #signUp:hover, nav #formOut:hover {
+  opacity: .6;
 }
 
 .content {
@@ -63,11 +76,26 @@ nav #signUp, nav #logIn {
           align-items: center;
 }
 
-.content .modal-content h5, .content .modal-content button {
+.content .modal-content h5 {
   margin-left: 40%;
 }
 
-.content .modal-content #closeBtn {
+.content .modal-content #googleBtn, .content .modal-content #googleRegister {
+  background-color: #fff;
+  color: gold;
+}
+
+.content .modal-content #microBtn, .content .modal-content #microRegister {
+  background-color: #fff;
+  color: #1e5de4;
+}
+
+.content .modal-content #appleBtn, .content .modal-content #appleRegister {
+  background-color: #fff;
+  color: #b81111;
+}
+
+.content .modal-content #closeBtnForm {
   border-radius: 3px;
   background-color: #a01c1c;
   color: #fff;
@@ -75,15 +103,16 @@ nav #signUp, nav #logIn {
 }
 
 .content .grid {
-  width: 50%;
-  height: 500px;
+  width: 35%;
+  height: 470px;
   margin: 30px 0 70px 0;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (0.5fr)[3];
-      grid-template-columns: repeat(3, 0.5fr);
-  -ms-grid-rows: (0.5fr)[2];
-      grid-template-rows: repeat(2, 0.5fr);
+  -ms-grid-columns: (0.3fr)[3];
+      grid-template-columns: repeat(3, 0.3fr);
+  -ms-grid-rows: (0.3fr)[2];
+      grid-template-rows: repeat(2, 0.3fr);
+  grid-gap: 10px;
 }
 
 .content .grid img {
@@ -166,7 +195,7 @@ nav #signUp, nav #logIn {
   display: none;
   position: absolute;
   font-size: 15px;
-  color: #e9632d;
+  color: #e49937;
   cursor: pointer;
 }
 
@@ -208,7 +237,7 @@ nav #signUp, nav #logIn {
   width: 550px;
   height: 100px;
   margin-top: 50px;
-  background-color: chocolate;
+  background-color: #e49937;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -248,26 +277,40 @@ nav #signUp, nav #logIn {
   top: 60%;
 }
 
-.content .music .musicControl #volumeMusic, .content .music .musicControl #volumeMusic2, .content .music .musicControl #volumeMusic3 {
+.content .music .musicControl #redoMusic, .content .music .musicControl #redoMusic2, .content .music .musicControl #redoMusic3 {
+  position: absolute;
+  left: 15%;
+  top: 60%;
+}
+
+.content .music .musicControl .volumeControls:hover > #volume {
+  display: block;
+}
+
+.content .music .musicControl .volumeControls:hover > #volume2 {
+  display: block;
+}
+
+.content .music .musicControl .volumeControls:hover > #volume3 {
+  display: block;
+}
+
+.content .music .musicControl #volumeMusic, .content .music .musicControl #volumeMusic2, .content .music .musicControl #volumeMusic3, .content .music .musicControl #volumeMute, .content .music .musicControl #volumeMute2, .content .music .musicControl #volumeMute3 {
   position: absolute;
   left: 20%;
   top: 60%;
 }
 
-.content .music .musicControl #volumeMusic:hover #volume, .content .music .musicControl #volumeMusic2:hover #volume, .content .music .musicControl #volumeMusic3:hover #volume {
-  display: block;
-}
-
 .content .music .musicControl #volume, .content .music .musicControl #volume2, .content .music .musicControl #volume3 {
   position: absolute;
-  left: 27%;
+  left: 23.5%;
   top: 60%;
   display: none;
 }
 
 .content .music .musicControl #currentTime, .content .music .musicControl #currentTime2, .content .music .musicControl #currentTime3 {
   position: absolute;
-  right: 25%;
+  right: 21.5%;
   top: 55%;
 }
 
@@ -311,11 +354,17 @@ nav #signUp, nav #logIn {
   margin: 10px 0 10px 0;
 }
 
+.content .banner a {
+  background-color: #e49937;
+  border: none;
+}
+
 footer {
   position: relative;
   width: 100%;
   height: 200px;
   background-color: #141414;
+  bottom: 0;
 }
 
 footer #logoFooter {
@@ -369,7 +418,7 @@ footer .socialMedias li:hover > a {
 
 footer .foot {
   position: absolute;
-  bottom: 0px;
+  bottom: 50px;
   right: 175px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -394,6 +443,10 @@ footer .foot a {
 }
 
 @media screen and (max-width: 1028px) {
+  .content .grid {
+    width: 50%;
+    height: 350px;
+  }
   footer #logoFooter {
     left: 100px;
   }
@@ -411,6 +464,7 @@ footer .foot a {
   }
   .content .grid {
     width: 60%;
+    height: 350px;
   }
   .content .users .userGrid {
     width: auto;
@@ -429,21 +483,25 @@ footer .foot a {
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  footer #logoFooter {
-    position: unset;
+  footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
-  footer .socialMedias {
-    position: unset;
-  }
-  footer .foot {
-    position: unset;
+  footer #logoFooter, footer .socialMedias, footer .foot {
+    position: relative;
+    bottom: 0;
   }
 }
 
 @media screen and (max-width: 600px) {
   .content .grid {
     width: 70%;
-    height: 400px;
+    height: 250px;
   }
   .content .users .userGrid {
     width: auto;
@@ -484,7 +542,7 @@ footer .foot a {
 @media screen and (max-width: 400px) {
   .content .grid {
     width: 80%;
-    height: 250px;
+    height: 150px;
   }
   .content .music {
     width: 250px;
