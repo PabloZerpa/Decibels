@@ -1,13 +1,13 @@
 
 export class AudioPlayer {
 
-    create(audio) { //console.log(this.minutes)
+    create(audio) {
       
       let tempVolume, intervalProgress, seconds = 0, minutes = 0, duration = audio.sound.duration;
       const deleteAudios = (id) => db.collection("audios").doc(id).delete();
 
       //---------- DECLARACION DE ELEMENTOS HTML ----------
-      const playlist = document.getElementById("playlist");
+      const playlistContent = document.getElementById("playlistContent");
       let music = document.createElement("div");
       let title = document.createElement("h5");
       let p = document.createElement("h6");
@@ -173,11 +173,11 @@ export class AudioPlayer {
         deleteAudios(e.target.dataset.id);
 
         //playlist.removeChild(music);
-        playlist.style.height = playlist.clientHeight - 225 + "px";
+        playlistContent.style.height = playlistContent.clientHeight - 225 + "px";
         let position = 1;
-        while(position <= playlist.querySelectorAll('h6').length)
+        while(position <= playlistContent.querySelectorAll('h6').length)
         {
-          playlist.querySelectorAll('h6').forEach(element => {
+          playlistContent.querySelectorAll('h6').forEach(element => {
             element.innerHTML = position;
             position++;
           });
@@ -215,8 +215,8 @@ export class AudioPlayer {
       music.appendChild(deleteMusic);
       music.appendChild(editMusic);
 
-      playlist.appendChild(music);
-      playlist.style.height = playlist.clientHeight + 225 + "px";
+      playlistContent.appendChild(music);
+      playlistContent.style.height = playlistContent.clientHeight + 225 + "px";
     }
 
   }

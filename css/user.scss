@@ -9,10 +9,10 @@
     grid-template-rows: 1fr;
     gap: 100px;
 
-    .loadData
+    .uploadFile
     {
         width: 300px;
-        height: 375px;
+        height: 450px;
         margin: 20px 0 0 50px;
         background-color: rgb(129, 129, 129);
         border-radius: 10px;
@@ -35,15 +35,28 @@
             border: none;
         }
 
-        select
+        .selectArea
         {
+            border: 2px solid #000;
             border-radius: 5px;
-            border: none;
-            margin: 10px 0 20px 0;
-            width: 200px;
+            padding: 8px;
+            margin-bottom: 10px;
+            background-color: rgb(179, 179, 179);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            select
+            {
+                border-radius: 5px;
+                border: none;
+                width: 200px;
+            }
         }
+
     
-        .title
+        .titleAudio
         {
             border-radius: 5px;
             border: 2px solid #000;
@@ -95,10 +108,12 @@
         display: flex;
         align-items: center;
 
-        .list
+        .playlist
         {
             display: flex;
+            flex-direction: column;
             align-items: center;
+            margin: 0 10px 0 10px;
 
             .playlistTitle, .playlistInput
             {
@@ -116,7 +131,7 @@
                 background-color: rgb(165, 165, 165);
             }
             
-            .playlist
+            .playlistContent
             {
                 width: 500px;
                 height: 300px;
@@ -222,6 +237,11 @@
                         left: 55%;
                     }
                 }
+            }
+
+            .deletePlaylist
+            {
+                background-color: rgb(119, 18, 18);
             }
 
         }
