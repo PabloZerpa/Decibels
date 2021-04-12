@@ -60,7 +60,9 @@
             </nav>
       </header>
 
+      <h2 id="userName"></h2>
       <div class="userContent">
+
         <div class="uploadFile">
           
           <div class="selectArea">
@@ -101,11 +103,11 @@
           
         </div>
 
-        <div class="allList">
+        <div class="allList" id="allList">
           <div class="playlist">
             <input type="text" class="playlistInput" id="playlistInput">
-            <p class="playlistTitle" id="playlistTitle">Title</p>
-            <div class="playlistContent" id="playlistContent"></div>
+            <h4 class="playlistTitle" id="playlistTitle">Title</h4>
+            <div class="playlistContent" id="playlist1"></div>
             <button class="btn btn-secondary deletePlaylist" id="deletePlaylist">Delete Playlist</button>
           </div>
           </div>
@@ -113,16 +115,15 @@
 
       </div>
       
-
     <!-- FIREBASE -->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-firestore.js"></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
         https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-analytics.js"></script>
 
     <script>
       // Your web app's Firebase configuration
@@ -133,8 +134,8 @@
         projectId: "decibels-85767",
         storageBucket: "decibels-85767.appspot.com",
         messagingSenderId: "372223922058",
-        appId: "1:372223922058:web:dec2ec24b4203dae88c273",
-        measurementId: "G-N8P867DJEQ"
+        appId: "1:372223922058:web:ef8a61bb9c51651488c273",
+        measurementId: "G-VT9ZLDH1GS"
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);

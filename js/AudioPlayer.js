@@ -2,12 +2,19 @@
 export class AudioPlayer {
 
     create(audio) {
-      
+
       let tempVolume, intervalProgress, seconds = 0, minutes = 0, duration = audio.sound.duration;
+      let select = document.getElementById("selectList");
       const deleteAudios = (id) => db.collection("audios").doc(id).delete();
 
       //---------- DECLARACION DE ELEMENTOS HTML ----------
-      const playlistContent = document.getElementById("playlistContent");
+      console.log(select.selectedIndex)
+      let list = "playlist" + select.selectedIndex;
+      let playlistContent;
+      if(select.selectedIndex > 0)
+        playlistContent = document.getElementById(list);
+
+      // playlistContent = document.getElementById("playlist1");
       let music = document.createElement("div");
       let title = document.createElement("h5");
       let p = document.createElement("h6");
@@ -32,7 +39,7 @@ export class AudioPlayer {
 
       title.setAttribute("id", "titleMusic");
       title.innerHTML = audio.title;
-      p.innerHTML = audio.id;
+      p.innerHTML = audio.idList;
 
       progressBar.setAttribute("class", "progress");
       progress.setAttribute("class", "progress-bar progress-bar-striped progress-bar-animated");
@@ -215,8 +222,12 @@ export class AudioPlayer {
       music.appendChild(deleteMusic);
       music.appendChild(editMusic);
 
-      playlistContent.appendChild(music);
-      playlistContent.style.height = playlistContent.clientHeight + 225 + "px";
+      if(select.selectedIndex > 0)
+      {
+        playlistContent.appendChild(music);
+        playlistContent.style.height = playlistContent.clientHeight + 225 + "px";
+
+      }
     }
 
   }

@@ -8,7 +8,10 @@ const searchOptions = document.getElementById("searchOptions");
 const formOut = document.getElementById("formOut");
 
 //------------------ AUDIO PLAYER VARIABLES ------------------
-const playlistContent = document.getElementById("playlistContent");
+const playlistContent = document.getElementById("playlist1");
+const allList = document.querySelector(".allList");
+let userData;
+let select = document.getElementById("selectList");
 let playlistInput = document.getElementById("playlistInput");
 let playlistTitle = document.getElementById("playlistTitle");
 playlistTitle.innerText = "Title";
@@ -23,11 +26,13 @@ const audioData = (id, title, path, idPlaylist) =>
     idPlaylist,
   });
 
-  const playlistsData = (id, title) =>
+  const playlistsData = (id, title, user) =>
   db.collection("playlists").doc().set({
     id,
     title,
+    user,
   });
+
 
 //------------------ SEARCH BAR OPTIONS ------------------
 searchBar.addEventListener("click", function()
@@ -65,6 +70,17 @@ formOut.addEventListener("click", (e) =>
 auth.onAuthStateChanged((user) => {
   if (user) {
     console.log("SESION INICIADA");
+    if (user != null) {
+      let name, email, uid;
+      name = user.displayName;
+      email = user.email;
+      uid = user.uid; 
+      userData = name;
+      console.log(name);
+      console.log(email);
+      console.log(uid);
+      console.log(userData);
+    }
   } else {
     console.log("SESION CERRADA");
   }
@@ -78,7 +94,18 @@ const updateAudios = (id, updatedAudios) => db.collection('audios').doc(id).upda
 
 //--------------- WINDOW LOAD-EVENT ---------------
 window.addEventListener("DOMContentLoaded", async (e) => 
-{
+{ console.log(userData);
+  document.getElementById("userName").innerHTML = "Welcome " + userData;
+  // db.collection("users").get().then((querySnapshot) => 
+  // {
+  //   querySnapshot.forEach((doc) => {
+  //       // doc.data() is never undefined for query doc snapshots
+  //       console.log(doc.id, " => ", doc.data());
+  //       userData = doc.data();
+        
+  //   });
+  // })
+
   onGetAudios((querySnapshot) =>
   {
     playlistContent.innerHTML = "";
@@ -88,7 +115,7 @@ window.addEventListener("DOMContentLoaded", async (e) =>
       data.id = doc.id;
       console.log(doc.data());
 
-      const music = new Music(data.id, data.title, data.path);
+      const music = new Music(data.id, data.title, data.path, data.idList);
       const audioPlayer = new AudioPlayer();
       audioPlayer.create(music);
     })
@@ -108,34 +135,43 @@ window.addEventListener("DOMContentLoaded", async (e) =>
 
 document.getElementById("createList").addEventListener("click", function(e)
 {
+  
+  let playlistSize = allList.querySelectorAll('h4');
+  idList = playlistSize.length + 1;
+  console.log(allList);
+  
   const playlist = new Playlist(idList, "Title");
   playlist.create();
-  playlistsData(idList,"Title");
-  idList++;
+  playlistsData(idList,"Title",userData.name);
+  console.log(select.selectedIndex);
 })
 
 //--------------- PC FILE ---------------
 document.getElementById("audioFile").addEventListener("change", function(e)
-{
+{ 
+  console.log("ALO");
   if(document.getElementById("title").value != "")
   {
     let audioPath = URL.createObjectURL(e.target.files[0]);
-    console.log(audioPath);
     // titleMusic.innerText = document.getElementById("audioFile").files[0].name;
     
-    let temp = playlistContent.querySelectorAll('h5')
-    idAudio = temp.length + 1;
-    idList++;
+    let audioSize = playlistContent.querySelectorAll('h5');
+    idAudio = audioSize.length + 1;
     
     const title = document.getElementById("title").value,
     path = audioPath;
+    let currentList = select.selectedIndex;
   
-    const music = new Music(idAudio, title, path);
+    console.log(idAudio);
+    console.log(title);
+    console.log(path);
+    console.log(currentList);
+    const music = new Music(idAudio, title, path, currentList);
     const audioPlayer = new AudioPlayer();
     audioPlayer.create(music);
 
     document.getElementById("title").value = "";
-    audioData(idAudio,title,path,idList);
+    audioData(idAudio,title,path,currentList);
   }
 })
 
@@ -184,7 +220,6 @@ document.addEventListener("click", function(e)
     //   }
     // }
 
-    let select = document.getElementById("selectList");
     for(let i = 0; i < select.length; i++)
     {
       if(select.options[i].text == tempTitle)
@@ -209,7 +244,6 @@ document.addEventListener("click", function(e)
 }, false);
 
 //--------------- SHOW FORM AUDIO ---------------
-let select = document.getElementById('selectList');
 select.addEventListener('change',function()
 {
   let selectedOption = this.options[select.selectedIndex];

@@ -9,14 +9,16 @@ export class Playlist
 
     create()
     {
-        let tempTitle;
+        const allList = document.querySelector(".allList");
+        let select = document.getElementById("selectList");
+        let tempTitle, idList;
         let playlist = document.createElement("div");
         playlist.setAttribute("class", "playlist");
-        playlist.setAttribute("id", this.id);
         const deleteList = (id) => db.collection("playlist").doc(id).delete();
 
         let playlistContent = document.createElement("div");
         playlistContent.setAttribute("class", "playlistContent");
+        playlistContent.setAttribute("id", "playlist" + this.id);
 
         let playlistInput = document.createElement("input");
         playlistInput.setAttribute("type", "text");
@@ -48,10 +50,10 @@ export class Playlist
             }
         }, false);
         
-        let playlistTitle = document.createElement("p");
+        let playlistTitle = document.createElement("h4");
         playlistTitle.setAttribute("id", "playlistTitle2");
         playlistTitle.setAttribute("class", "playlistTitle");
-        playlistTitle.innerHTML = this.title + this.id;
+        playlistTitle.innerHTML = this.title + " " + this.id;
         playlistTitle.addEventListener("dblclick", function(e)
         {
           tempTitle = playlistTitle.innerHTML;
@@ -74,6 +76,8 @@ export class Playlist
             document.querySelector(".allList").removeChild(document.getElementById(this.id))
             document.getElementById("selectList").removeChild(document.getElementById("selectList").lastChild)
             deleteList(e.target.dataset.id);
+            let playlistSize = allList.querySelectorAll('h4');
+            idList = playlistSize.length;
         });
 
         document.querySelector(".allList").appendChild(playlist);
@@ -81,8 +85,8 @@ export class Playlist
         playlist.appendChild(playlistTitle);
         playlist.appendChild(playlistContent);
         playlist.appendChild(deletePlaylist);
-        let select = document.getElementById('selectList')
         select.appendChild(option);
+        select.selectedIndex = select.length - 1;
 
     }
 }

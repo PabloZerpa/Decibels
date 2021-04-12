@@ -20,11 +20,19 @@ const track2 = document.getElementById("track2");
 const track3 = document.getElementById("track3");
 let intervalProgress, duration, intervalTime;
 let tempVolume = [0,0,0];
-let seconds = 0, minutes = 0;
+let seconds = 0, minutes = 0, idUser = 1;
 track1.ondurationchange = function() 
 {
 	duration = track1.duration;
 }
+
+//--------------- DATABASE ---------------
+const userData = (id, name, email) =>
+  db.collection("users").doc().set({
+    id,
+    name,
+    email,
+  });
 
 
 //--------------- SEARCH BAR OPTIONS ---------------
@@ -81,8 +89,8 @@ formLog.addEventListener("submit", (e) =>
         .signInWithEmailAndPassword(emailLog, passLog)
         .then(userCredential =>
             {
-                console.log("SE REGISTRO")
-                formSign.reset();
+                console.log("INICIO SESION")
+                formLog.reset();
                 window.open("user.html","_self");
             })
 })
@@ -96,20 +104,38 @@ formSign.addEventListener("submit", (e) =>
     const passSign = document.getElementById("passSign").value;
     const repassSign = document.getElementById("repassSign").value;
 
-    auth
-        .createUserWithEmailAndPassword(emailSign, passSign)
-        .then(userCredential =>
+    if(repassSign == passSign)
+    {  
+        auth.createUserWithEmailAndPassword(emailSign, passSign)
+            .then(userCredential =>
             {
-                console.log("INICIO SESION")
-                formLog.reset();
+                console.log("SE REGISTRO");
+
+                let user = firebase.auth().currentUser;
+                user.updateProfile({
+                displayName: nameSign,
+                }).then(function() {
+                // Update successful.
+                }).catch(function(error) {
+                // An error happened.
+                });
+                
+                userData(idUser,nameSign,emailSign);
+                console.log(idUser);
+                console.log(nameSign);
+                console.log(emailSign);
+                idUser++;
+                formSign.reset();
                 window.open("user.html","_blank");
             })
+    }
 })
 
 // list for auth state changes
 auth.onAuthStateChanged((user) => {
   if (user) {
     console.log("SESION INICIADA");
+
   } else {
     console.log("SESION CERRADA");
   }

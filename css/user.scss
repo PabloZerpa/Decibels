@@ -1,7 +1,13 @@
 
+h2
+{
+    display: flex;
+    justify-content: center;
+}
+
 .userContent
 {
-    margin: 0;
+    margin-top: 50px;
     padding: 0;
     width: 400px;
     display: grid;
@@ -118,7 +124,7 @@
             .playlistTitle, .playlistInput
             {
                 position: absolute;
-                top: 12%;
+                top: 20%;
                 color: #000;
                 border: none;
                 font-size: 25px;
