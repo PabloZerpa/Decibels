@@ -8,31 +8,10 @@ const searchOptions = document.getElementById("searchOptions");
 const formOut = document.getElementById("formOut");
 
 //------------------ AUDIO PLAYER VARIABLES ------------------
-const playlistContent = document.getElementById("playlist1");
 const allList = document.querySelector(".allList");
-let userData;
+let playlistContent;
 let select = document.getElementById("selectList");
-let playlistInput = document.getElementById("playlistInput");
-let playlistTitle = document.getElementById("playlistTitle");
-playlistTitle.innerText = "Title";
-let idAudio = 1, idList = 1, tempTitle;
-
-//------------------ DATABASE ------------------
-const audioData = (id, title, path, idPlaylist) =>
-  db.collection("audios").doc().set({
-    id,
-    title,
-    path,
-    idPlaylist,
-  });
-
-  const playlistsData = (id, title, user) =>
-  db.collection("playlists").doc().set({
-    id,
-    title,
-    user,
-  });
-
+let idAudio = 1, idList = 1, idUser, userName;
 
 //------------------ SEARCH BAR OPTIONS ------------------
 searchBar.addEventListener("click", function()
@@ -66,20 +45,72 @@ formOut.addEventListener("click", (e) =>
         })
 })
 
+
+//------------------ ADD USER DATABASE------------------
+const userData = (id, name, email) =>
+{
+  db.collection("users").doc(name).set({
+    id,
+    name,
+    email,
+  }).then(() => {;
+    console.log("User successfully updated!")
+  })
+}
+
+//------------------ ADD PLAYLIST DATABASE ------------------
+const playListData = (name, title, id) =>
+  db.collection("users").doc(name).collection("playlist").doc("playlist"+id).set({
+    id,
+    title,
+    }).then(() => {;
+      console.log("Playlist successfully updated!")
+    })
+
+//------------------ ADD AUDIO DATABASE ------------------
+const audioData = (name, id, title, path) =>
+{ 
+  db.collection("users").doc(name).collection("playlist").doc("playlist"+select.selectedIndex).collection("audios"+select.selectedIndex).doc(title).set({
+    "audio.id": id,
+    "audio.title": title,
+    "audio.path": path,
+  })
+  .then(() => {
+    console.log("Audio successfully updated!");
+  });
+}
+
+//------------------ LOAD DATA FROM DATABASE ------------------
+const loadData = () =>
+{
+  db.collection("users").doc("Pablo Andres").collection("playlist").doc("playlist1")
+      .onSnapshot((doc) => {
+          console.log("Current data: ", doc.data());
+          playlistContent.innerHTML = "";
+          if(doc.data() != undefined)
+          {
+            const data = doc.data();
+            const playlist = new Playlist(data.id, data.title);
+            playlist.create();
+            const music = new Music(data.id, data.title, data.path, data.idList);
+            const audioPlayer = new AudioPlayer();
+            audioPlayer.create(music);
+          }
+      });
+}
+
 //--------------- AUTH STATES ---------------
 auth.onAuthStateChanged((user) => {
   if (user) {
     console.log("SESION INICIADA");
     if (user != null) {
-      let name, email, uid;
-      name = user.displayName;
+      let email;
+      userName = user.displayName;
       email = user.email;
-      uid = user.uid; 
-      userData = name;
-      console.log(name);
-      console.log(email);
-      console.log(uid);
-      console.log(userData);
+      idUser = user.uid; 
+      console.log(userName);console.log(email);console.log(idUser);
+      userData(idUser,userName,email);
+      document.getElementById("userName").innerHTML = "Welcome " + userName;
     }
   } else {
     console.log("SESION CERRADA");
@@ -87,63 +118,92 @@ auth.onAuthStateChanged((user) => {
 });
 
 const getAudios = () => db.collection("audios").get();
-const onGetAudios = (callback) => db.collection("audios").onSnapshot(callback);
+const onGetAudios = (callback) => db.collection("users").doc("Pablo Andres").collection("playlist").doc("playlist1").onSnapshot(callback);
 const deleteAudios = (id) => db.collection("audios").doc(id).delete();
 //const getAudios = (id) => db.collection("audios").doc(id).get();
 const updateAudios = (id, updatedAudios) => db.collection('audios').doc(id).update(updatedAudios);
 
 //--------------- WINDOW LOAD-EVENT ---------------
 window.addEventListener("DOMContentLoaded", async (e) => 
-{ console.log(userData);
-  document.getElementById("userName").innerHTML = "Welcome " + userData;
-  // db.collection("users").get().then((querySnapshot) => 
-  // {
-  //   querySnapshot.forEach((doc) => {
-  //       // doc.data() is never undefined for query doc snapshots
-  //       console.log(doc.id, " => ", doc.data());
-  //       userData = doc.data();
-        
-  //   });
-  // })
-
-  onGetAudios((querySnapshot) =>
-  {
-    playlistContent.innerHTML = "";
-
-    querySnapshot.forEach(doc => {
-      const data = doc.data();
-      data.id = doc.id;
-      console.log(doc.data());
-
-      const music = new Music(data.id, data.title, data.path, data.idList);
-      const audioPlayer = new AudioPlayer();
-      audioPlayer.create(music);
-    })
-
-    let position = 1;
-    while(position <= playlistContent.querySelectorAll('h6').length)
-    {
-      playlistContent.querySelectorAll('h6').forEach(element => 
+{
+  
+  //--------------- LOAD PLAYLIST AND FILE ---------------
+  db.collection("users").doc("Pablo Andres").collection("playlist").doc("playlist1")
+    .onSnapshot((doc) => {
+        console.log("Current playlist data: ", doc.data());
+        if(document.getElementById("playlist" + (select.selectedIndex+1)) != null)
+        {
+          playlistContent.document.getElementById("playlist" + select.selectedIndex);
+          playlistContent.innerHTML = "";
+        }
+        if(doc.data() != undefined)
+        {
+          const data = doc.data();
+          const playlist = new Playlist(data.id, data.title);
+          playlist.create();
+          // const music = new Music(data.id, data.title, data.path);
+          // const audioPlayer = new AudioPlayer();
+          // audioPlayer.create(music);
+        }
+  });
+  db.collection("users").doc("Pablo Andres").collection("playlist").doc("playlist1").collection("audios1").doc("Akatsuki Theme")
+    .onSnapshot((doc) => {
+      console.log("Current audio data: ", doc.data());
+      if(doc.data() != undefined)
       {
-        element.innerHTML = position;
-        position++;
-      });
-    }
-  })
+        const data2 = doc.data();
+        const music = new Music(data2.id, data2.title, data2.path);
+        const audioPlayer = new AudioPlayer();
+        audioPlayer.create(music);
+      }
+  });
+
+
+  // if(document.getElementById("playlist" + select.selectedIndex) != null)
+  // {
+  //   playlistContent.document.getElementById("playlist" + select.selectedIndex);
+  //   onGetAudios((querySnapshot) =>
+  //   {
+  //     playlistContent.innerHTML = "";
+  
+  //     querySnapshot.forEach(doc => {
+  //       const data = doc.data();
+  //       data.id = doc.id;
+  //       console.log(doc.data());
+  
+  //       const music = new Music(data.id, data.title, data.path, data.idList);
+  //       const audioPlayer = new AudioPlayer();
+  //       audioPlayer.create(music);
+  //     })
+  
+  //     let position = 1;
+  //     while(position <= playlistContent.querySelectorAll('h6').length)
+  //     {
+  //       playlistContent.querySelectorAll('h6').forEach(element => 
+  //       {
+  //         element.innerHTML = position;
+  //         position++;
+  //       });
+  //     }
+  //   })
+  // }
 
 });
 
+//--------------- CREATE PLAYLIST ---------------
 document.getElementById("createList").addEventListener("click", function(e)
 {
-  
   let playlistSize = allList.querySelectorAll('h4');
   idList = playlistSize.length + 1;
   console.log(allList);
+  console.log("IDLIST: " + idList);
+  console.log("playlist" + select.selectedIndex)
   
   const playlist = new Playlist(idList, "Title");
   playlist.create();
-  playlistsData(idList,"Title",userData.name);
-  console.log(select.selectedIndex);
+  playListData(userName, "Title"+idList, idList);
+  playlistContent = document.getElementById("playlist" + select.selectedIndex);
+  //console.log("Select option: " + select.selectedIndex);
 })
 
 //--------------- PC FILE ---------------
@@ -162,16 +222,13 @@ document.getElementById("audioFile").addEventListener("change", function(e)
     path = audioPath;
     let currentList = select.selectedIndex;
   
-    console.log(idAudio);
-    console.log(title);
-    console.log(path);
-    console.log(currentList);
+    console.log(idAudio);console.log(title);console.log(path);console.log(currentList);
     const music = new Music(idAudio, title, path, currentList);
     const audioPlayer = new AudioPlayer();
     audioPlayer.create(music);
 
     document.getElementById("title").value = "";
-    audioData(idAudio,title,path,currentList);
+    audioData(userName, idAudio, title, path);
   }
 })
 
@@ -193,55 +250,9 @@ document.getElementById("addBtn").addEventListener("click", function(e)
     document.getElementById("title").value = "";
     document.getElementById("url").value = "";
 
-    audioData(idAudio,title,path);
+    audioData(userName, idAudio, title, path);
   }
 })
-
-//--------------- PLAYLIST TITLE ---------------
-playlistTitle.addEventListener("dblclick", function(e)
-{
-  tempTitle = playlistTitle.innerHTML;
-  playlistTitle.style.display = "none";
-  playlistInput.style.display = "block";
-  playlistInput.value = playlistTitle.innerHTML;
-})
-
-//--------------- PLAYLIST INPUT ---------------
-document.addEventListener("click", function(e)
-{
-    // let index;
-    // let select = document.getElementById("selectList");
-    // for(let i = 0; i < select.length; i++)
-    // {
-    //   if(select.options[i].text == playlistTitle.innerText)
-    //   {
-    //     select.selectedIndex = i;
-    //     index = i;
-    //   }
-    // }
-
-    for(let i = 0; i < select.length; i++)
-    {
-      if(select.options[i].text == tempTitle)
-      {
-        select.options[i].text = playlistInput.value;
-      }
-    }
-
-    if(playlistInput.style.display == "block")
-    {
-        if(e.target != playlistInput)
-        {
-          if(playlistInput.value == "")
-            playlistTitle.innerText = "Title";
-          else
-            playlistTitle.innerText = playlistInput.value;
-            
-          playlistTitle.style.display = "block";
-          playlistInput.style.display = "none";
-        }
-    }
-}, false);
 
 //--------------- SHOW FORM AUDIO ---------------
 select.addEventListener('change',function()
@@ -249,11 +260,4 @@ select.addEventListener('change',function()
   let selectedOption = this.options[select.selectedIndex];
   document.getElementById("formAudio").style.display = "block";
   console.log(selectedOption.value + ': ' + selectedOption.text);
-});
-
-//--------------- DELETE PLAYLIST ---------------
-document.getElementById('deletePlaylist').addEventListener("click", () =>
-{
-  document.querySelector(".allList").removeChild(document.getElementById('second'))
-  document.getElementById("selectList").removeChild(document.getElementById("selectList").lastChild)
 });

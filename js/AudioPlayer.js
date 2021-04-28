@@ -168,6 +168,14 @@ export class AudioPlayer {
       current.setAttribute("id", "currentTime");
       current.innerHTML = "00:00";
 
+      const deleteAud = () =>
+      {
+        db.collection("users").doc("Pablo Andres").collection("playlist").doc("playlist"+select.selectedIndex).collection("audios").doc(audio.title).delete().then(() => {
+          console.log("Document successfully deleted!");
+        }).catch((error) => {
+          console.error("Error removing document: ", error);
+      });
+      }
       deleteMusic.setAttribute("class", "btn btn-primary");
       deleteMusic.setAttribute("id", "deleteMusic");
       deleteMusic.setAttribute("data-id", audio.id);
@@ -176,10 +184,11 @@ export class AudioPlayer {
         console.log("DELETE")
 
         audio.sound.pause();
-        console.log(e.target.dataset.id);
-        deleteAudios(e.target.dataset.id);
+        //console.log(e.target.dataset.id);
+        //deleteAudios(e.target.dataset.id);
+        deleteAud();
 
-        //playlist.removeChild(music);
+        playlistContent.removeChild(music);
         playlistContent.style.height = playlistContent.clientHeight - 225 + "px";
         let position = 1;
         while(position <= playlistContent.querySelectorAll('h6').length)
@@ -222,7 +231,7 @@ export class AudioPlayer {
       music.appendChild(deleteMusic);
       music.appendChild(editMusic);
 
-      if(select.selectedIndex > 0)
+      if(select.selectedIndex > 0 && playlistContent != null)
       {
         playlistContent.appendChild(music);
         playlistContent.style.height = playlistContent.clientHeight + 225 + "px";

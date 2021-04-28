@@ -9,11 +9,13 @@ export class Playlist
 
     create()
     {
+      
         const allList = document.querySelector(".allList");
         let select = document.getElementById("selectList");
         let tempTitle, idList;
         let playlist = document.createElement("div");
         playlist.setAttribute("class", "playlist");
+        playlist.setAttribute("id", this.id);
         const deleteList = (id) => db.collection("playlist").doc(id).delete();
 
         let playlistContent = document.createElement("div");
@@ -24,6 +26,17 @@ export class Playlist
         playlistInput.setAttribute("type", "text");
         playlistInput.setAttribute("id", "playlistInput2");
         playlistInput.setAttribute("class", "playlistInput");
+
+        const playlistData = (name, title) =>
+        { 
+          db.collection("users").doc(name).collection("playlist").doc("playlist"+this.id).update({
+            "title": title,
+          })
+          .then(() => {
+            console.log("Document successfully updated!");
+          });
+        }
+
         document.addEventListener("click", function(e)
         {
             let select = document.getElementById("selectList");
@@ -46,6 +59,7 @@ export class Playlist
                     
                   playlistTitle.style.display = "block";
                   playlistInput.style.display = "none";
+                  playlistData("Pablo Andres", playlistInput.value);
                 }
             }
         }, false);
@@ -66,6 +80,14 @@ export class Playlist
         option.value = playlistTitle.innerHTML;
         option.text = playlistTitle.innerHTML;
 
+        const deletePlay = (id) =>
+        {
+          db.collection("users").doc("Pablo Andres").collection("playlist").doc("playlist"+id).delete().then(() => {
+            console.log("Document successfully deleted!");
+          }).catch((error) => {
+            console.error("Error removing document: ", error);
+        });
+        }
         let deletePlaylist = document.createElement("button");
         deletePlaylist.setAttribute("class", "btn btn-secondary deletePlaylist");
         deletePlaylist.setAttribute("id", "deletePlaylist");
@@ -75,7 +97,8 @@ export class Playlist
         {
             document.querySelector(".allList").removeChild(document.getElementById(this.id))
             document.getElementById("selectList").removeChild(document.getElementById("selectList").lastChild)
-            deleteList(e.target.dataset.id);
+            //deleteList(e.target.dataset.id);
+            deletePlay(this.id);
             let playlistSize = allList.querySelectorAll('h4');
             idList = playlistSize.length;
         });
@@ -87,6 +110,7 @@ export class Playlist
         playlist.appendChild(deletePlaylist);
         select.appendChild(option);
         select.selectedIndex = select.length - 1;
-
+        
+        document.getElementById("formAudio").style.display = "block";
     }
 }

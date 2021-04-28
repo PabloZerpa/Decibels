@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg" href="./css/headphones-alt-solid.svg" sizes="any">
+    <link rel="stylesheet" href="css/temporal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+    <title>Decibels</title>
+</head>
+<body>
+    <!-------------------------- HEADER -------------------------->
+  <header>
+    <!-------------------- NAVEGATION -------------------->
+    <nav>
+      <!-------------------- LOGO -------------------->
+      <div class="logo">
+        <a href="temporal.html"><i id="logoImg" class="fas fa-headphones-alt"></i></a>
+        <h6 id="logoName"><a href="temporal.html">Decibels</a></h6>
+      </div>
+      
+      <!-------------------- NAV LINKS -------------------->
+      <ul class="navLinks">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Discover</a></li>
+        <li><a href="#">Playlist</a></li>
+        <li><a href="#">Upload</a></li>
+        <div class="search">
+          <input class="form-control me-2" id="searchBar" type="search" placeholder="Search" aria-label="Search">
+          <ul id="searchOptions">
+              <button style="background-color: rgb(248, 234, 109);"><i class="fas fa-bolt"></i> Electro</button>
+              <button style="background-color: rgb(238, 152, 39);"><i class="fas fa-leaf"></i> Ambient</button>
+              <button style="background-color: rgb(214, 29, 29);"><i class="fas fa-drum"></i> Rap</button>
+              <button style="background-color: rgb(223, 55, 147);"><i class="fas fa-compact-disc"></i> Pop</button>
+              <button style="background-color: rgb(184, 38, 228);"><i class="fas fa-guitar"></i> Rock</button>
+              <button style="background-color: rgb(37, 126, 228);"><i class="fas fa-skull"></i> Metal</button>
+          </ul>
+        </div>
+        <button class="btn btn-outline-warning" id="searchIcon" type="submit"><i class="fas fa-search" style="color: #fff;"></i></button>
+      </ul>
+
+      <div class="navBtn">
+        <button type="button" class="btn btn-secondary" id="signUp" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Sign Up</button>
+        <button type="button" class="btn btn-secondary" id="logIn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Log In</button>
+      </div>
+
+    </nav>
+  </header>
+    
+  <div class="content">
+      <!-------------------------- MODAL LOGIN -------------------------->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="formTitle"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeBtnForm">X</button>
+            </div>
+            <div class="modal-body">
+              <form id="formSign">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="nameSign" aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="emailSign" aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="passSign" required>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Reenter Password</label>
+                  <input type="password" class="form-control" id="repassSign" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" id="registerBtn">Sign Up</button>
+                <button type="submit" class="btn btn-primary btn-block" id="googleRegister">Sign Up with Google</button>
+                <button type="submit" class="btn btn-primary btn-block" id="microRegister">Sign Up with Microsoft</button>
+                <button type="submit" class="btn btn-primary btn-block" id="appleRegister">Sign Up with Apple</button>
+              </form>
+  
+              <form id="formLog" style="display: none;">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="emailLog" aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="passLog" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                <button type="submit" class="btn btn-primary btn-block" id="googleBtn">Log In with Google</button>
+                <button type="submit" class="btn btn-primary btn-block" id="microBtn">Log In with Microsoft</button>
+                <button type="submit" class="btn btn-primary btn-block" id="appleBtn">Log In with Apple</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-------------------- INTRODUCTION SECTION -------------------->
+      <div class="intro">
+        <div class="firstContent">
+            <h2 id="title1">New music <br>and genres</h2>
+            <button class="btn btn-secondary" id="getStarted">Get Started</button>
+
+        </div>
+        <div class="grid">
+            <img src="https://d1z39p6l75vw79.cloudfront.net/u/1/4d21f5b2d32818f0214a1532dbfdede3abf9be36/original/bzblog-wdi-best-rock-site-img01.jpg" alt="">
+            <img src="https://i.ytimg.com/vi/0CWUFzbXVJg/maxresdefault.jpg" alt="">
+            <img src="https://lh4.googleusercontent.com/proxy/XIOpbmehSndrfrRw-ZYucS-Yb5M16wfIBdlBof3u4YC2LEH8t4vZxBaBCPH_PJ6CK9o1t9njDY5_HJjaheQtbDOXk48rfzarf5u2Pg" alt="">
+            <img src="https://i.ytimg.com/vi/fnqb8zqHqdY/maxresdefault.jpg" alt="">
+        </div>
+    </div>
+
+    <!-------------------- ARTIST SECTION -------------------->
+      <div class="artist">
+
+          <h2 class="titles">Discover Artist</h2>
+          <div class="artistGrid">
+              <div class="row">
+                  <div class="artistPicture">
+                      <img src="https://www.elnacional.cat/uploads/s1/13/32/17/88/europapress-3575490-nuevo-disco-daft-punk-1.jpeg" alt="Daft Punk">
+                      <h6 id="artistName">Daft Punk</h6>
+                      <div class="miniBtn">
+                          <i class="fas fa-play" id="playIcon"></i>
+                          <i class="fas fa-star" id="starIcon"></i>
+                          <i class="fas fa-caret-down" id="moreIcon"></i>
+                      </div>
+                  </div>
+                  <div class="artistPicture">
+                      <img src="https://storage.googleapis.com/stateless-elclubdelrock-com/2020/05/7545f6cf-metallica2017-1280x720-1.jpg" alt="Metallica">
+                      <h6 id="artistName">Metallica</h6>
+                      <div class="miniBtn">
+                          <i class="fas fa-play" id="playIcon"></i>
+                          <i class="fas fa-star" id="starIcon"></i>
+                          <i class="fas fa-caret-down" id="moreIcon"></i>
+                      </div>
+                  </div>
+                  <div class="artistPicture">
+                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnZkxbY5HBcP93IpIGaV0YG4HAdRfQSxJYNg&usqp=CAU" alt="Adele">
+                      <h6 id="artistName">Adele</h6>
+                      <div class="miniBtn">
+                          <i class="fas fa-play" id="playIcon"></i>
+                          <i class="fas fa-star" id="starIcon"></i>
+                          <i class="fas fa-caret-down" id="moreIcon"></i>
+                      </div>
+                  </div>
+                  <div class="artistPicture">
+                      <img src="https://sonar.es/system/attached_images/19685/medium/gorillaz-sonar-bcn-2018.jpg?1517486863" alt="Gorillaz">
+                      <h6 id="artistName">Gorillaz</h6>
+                      <div class="miniBtn">
+                          <i class="fas fa-play" id="playIcon"></i>
+                          <i class="fas fa-star" id="starIcon"></i>
+                          <i class="fas fa-caret-down" id="moreIcon"></i>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row">
+                  <div class="artistPicture">
+                      <img src="https://m.media-amazon.com/images/I/81vzCypTKXL._SS500_.jpg" alt="Lindsey Sterling">
+                      <h6 id="artistName">Lindsey Sterling</h6>
+                      <div class="miniBtn">
+                          <i class="fas fa-play" id="playIcon"></i>
+                          <i class="fas fa-star" id="starIcon"></i>
+                          <i class="fas fa-caret-down" id="moreIcon"></i>
+                      </div>
+                  </div>
+                  <div class="artistPicture">
+                      <img src="https://vignette.wikia.nocookie.net/youtubepedia/images/7/75/Marshmello.jpg/revision/latest?cb=20190112082054&path-prefix=es" alt="Marshmello">
+                      <h6 id="artistName">Marshmello</h6>
+                      <div class="miniBtn">
+                          <i class="fas fa-play" id="playIcon"></i>
+                          <i class="fas fa-star" id="starIcon"></i>
+                          <i class="fas fa-caret-down" id="moreIcon"></i>
+                      </div>
+                  </div>
+                  <div class="artistPicture">
+                      <img src="https://www.metal-hammer.de/wp-content/uploads/2015/04/23/12/System-Of-A-Down_BINARY_663814.jpg" alt="SOAD">
+                      <h6 id="artistName">SOAD</h6>
+                      <div class="miniBtn">
+                          <i class="fas fa-play" id="playIcon"></i>
+                          <i class="fas fa-star" id="starIcon"></i>
+                          <i class="fas fa-caret-down" id="moreIcon"></i>
+                      </div>
+                  </div>
+                  <div class="artistPicture">
+                      <img src="https://www.somostuvoz.net/wp-content/uploads/2021/02/02-the-weeknd-press-2019-cr-Nabil-Elderkin-billboard-1548-1024x677-2-768x508-1.jpg" alt="The Weeknd">
+                      <h6 id="artistName">The Weeknd</h6>
+                      <div class="miniBtn">
+                          <i class="fas fa-play" id="playIcon"></i>
+                          <i class="fas fa-star" id="starIcon"></i>
+                          <i class="fas fa-caret-down" id="moreIcon"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-------------------- MUSIC SECTION -------------------->
+      <div class="musicSection">
+        <h2 class="titles">Listen Music</h2>
+
+          <div class="music">
+            <div class="overlay"></div>
+            <div class="musicContent">
+              <audio id="track1">
+                <source src="/Two Sugars.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+              <h2 id="musicTitle">Throne</h2>
+              <h3 id="musicName">Bring Me The Horizon</h3>
+              <input id="progress" type="range" value="50" />
+              <div class="musicControls">
+                <div class="musicColumn"><i  id="redoMusic" class="fa fa-redo-alt" aria-hidden="true"></i></div>
+                <div class="musicColumn"><i class="fa fa-step-backward" aria-hidden="true"></i></div>
+                <div class="musicColumn"><i  id="playMusic" class="fa fa-play play-btn fa-fw" aria-hidden="true"></i></div>
+                <div class="musicColumn"><i  id="pauseMusic" class="fa fa-pause pause-btn fa-fw" aria-hidden="true" style="display: none;"></i></div>
+                <div class="musicColumn"><i class="fa fa-step-forward" aria-hidden="true"></i></div>
+                <div class="musicColumn">
+                  <div class="musicVolume">
+                    <i class="fas fa-volume-up" id="volumeMusic"></i>
+                    <i class="fas fa-volume-mute" id="muteMusic" style="display: none;"></i>
+                    <input type="range" name="volume" id="volume" min="0" max="1" step="0.01" value="0.5">
+                  </div>
+                </div>
+                <div class="musicTime">
+                  <p id="currentTime">00:00</p>
+                  <p id="totalTime">/00:00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="music">
+            <div class="overlay"></div>
+            <div class="musicContent">
+              <audio id="track1">
+                <source src="/Two Sugars.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+              <h2 id="musicTitle">Throne</h2>
+              <h3 id="musicName">Bring Me The Horizon</h3>
+              <input id="progress" type="range" value="50" />
+              <div class="musicControls">
+                <div class="musicColumn"><i  id="redoMusic" class="fa fa-redo-alt" aria-hidden="true"></i></div>
+                <div class="musicColumn"><i class="fa fa-step-backward" aria-hidden="true"></i></div>
+                <div class="musicColumn"><i  id="playMusic" class="fa fa-play play-btn fa-fw" aria-hidden="true"></i></div>
+                <div class="musicColumn"><i  id="pauseMusic" class="fa fa-pause pause-btn fa-fw" aria-hidden="true" style="display: none;"></i></div>
+                <div class="musicColumn"><i class="fa fa-step-forward" aria-hidden="true"></i></div>
+                <div class="musicColumn">
+                  <div class="musicVolume">
+                    <i class="fas fa-volume-up" id="volumeMusic"></i>
+                    <i class="fas fa-volume-mute" id="muteMusic" style="display: none;"></i>
+                    <input type="range" name="volume" id="volume" min="0" max="1" step="0.01" value="0.5">
+                  </div>
+                </div>
+                <div class="musicTime">
+                  <p id="currentTime">00:00</p>
+                  <p id="totalTime">/00:00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="music">
+            <div class="overlay"></div>
+            <div class="musicContent">
+              <audio id="track1">
+                <source src="/Two Sugars.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+              <h2 id="musicTitle">Throne</h2>
+              <h3 id="musicName">Bring Me The Horizon</h3>
+              <input id="progress" type="range" value="50" />
+              <div class="musicControls">
+                <div class="musicColumn"><i  id="redoMusic" class="fa fa-redo-alt" aria-hidden="true"></i></div>
+                <div class="musicColumn"><i class="fa fa-step-backward" aria-hidden="true"></i></div>
+                <div class="musicColumn"><i  id="playMusic" class="fa fa-play play-btn fa-fw" aria-hidden="true"></i></div>
+                <div class="musicColumn"><i  id="pauseMusic" class="fa fa-pause pause-btn fa-fw" aria-hidden="true" style="display: none;"></i></div>
+                <div class="musicColumn"><i class="fa fa-step-forward" aria-hidden="true"></i></div>
+                <div class="musicColumn">
+                  <div class="musicVolume">
+                    <i class="fas fa-volume-up" id="volumeMusic"></i>
+                    <i class="fas fa-volume-mute" id="muteMusic" style="display: none;"></i>
+                    <input type="range" name="volume" id="volume" min="0" max="1" step="0.01" value="0.5">
+                  </div>
+                </div>
+                <div class="musicTime">
+                  <p id="currentTime">00:00</p>
+                  <p id="totalTime">/00:00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <!-- ------------------ FEACTURES SECTION ------------------>
+    <div class="feactures">
+        <h2 class="titles">How it Works</h2>
+        <div class="elements">
+            <div class="element">
+                <div class="card w-50">
+                    <div class="card-body">
+                      <h6>Listen</h6>
+                      <i class="fas fa-music"></i>
+                      <p>Listen and find music of the different generes</p>
+                      <a href="#" class="btn btn-warning">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="element">
+                <div class="card w-50">
+                    <div class="card-body">
+                        <h6>Share</h6>
+                        <i class="fas fa-share-alt"></i>
+                        <p>Share you playlist and upload you own tracks</p>
+                        <a href="#" class="btn btn-warning">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="element">
+                <div class="card w-50">
+                    <div class="card-body">
+                        <h6>Follow</h6>
+                        <i class="fas fa-sliders-h"></i>
+                        <p>Follow and know artist of the all world</p>
+                        <a href="#" class="btn btn-warning">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+
+  <!------------------ FOOTER --------------------->
+  <footer>
+    <div class="foot">
+      <i id="icon6" class="fas fa-headphones-alt icon"></i>
+      <div class="brand">
+        <div class="logoFooter">
+            <a href="temporal.html"><i id="logoFoot" class="fas fa-headphones-alt"></i></a>
+            <p id="logoFoot"><a href="temporal.html">Decibels</a></p>
+        </div>
+
+        <div class="social">
+          <ul>
+            <li><a href="#"><i class="fab fa-youtube" style="color: rgb(160, 7, 7);"></i></a></li>
+            <li><a href="#"><i class="fab fa-facebook-f" style="color: rgb(22, 66, 163);"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter" style="color: rgb(64, 117, 233);"></i></a></li>
+            <li><a href="#"><i class="fab fa-github" style="color: rgb(185, 185, 185);"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="info">
+        <ul>
+          <li><a href="#">© Copyright 2021</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Support</a></li>
+        </ul>
+        <ul>
+          <li><a href="#">Log In</a></li>
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">Explore</a></li>
+          <li><a href="#">Jobs</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  </div>
+    
+    <script src="./js/temporal.js"></script>
+</body>
+</html>

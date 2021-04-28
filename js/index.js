@@ -1,7 +1,10 @@
 
+
 // NAV VARIABLES
 const searchBar = document.getElementById("searchBar");
 const searchOptions = document.getElementById("searchOptions");
+
+// LOGIN VARIABLES
 const logIn = document.getElementById("logIn");
 const signUp = document.getElementById("signUp");
 const signForm = document.getElementById("signForm");
@@ -15,25 +18,15 @@ const microBtn = document.getElementById("microBtn");
 const appleBtn = document.getElementById("appleBtn");
 
 // MUSIC CONTROLS VARIABLES
-const track1 = document.getElementById("track1");
-const track2 = document.getElementById("track2");
-const track3 = document.getElementById("track3");
-let intervalProgress, duration, intervalTime;
-let tempVolume = [0,0,0];
-let seconds = 0, minutes = 0, idUser = 1;
-track1.ondurationchange = function() 
+const audio = document.getElementById("audio1");
+let totalTime1 = document.getElementById("totalTime1");
+let totalTime2 = document.getElementById("totalTime2");
+let totalTime3 = document.getElementById("totalTime3");
+let tempVolume = 0, duration, seconds = 0, minutes = 0, intervalProgress;
+audio.ondurationchange = function() 
 {
-	duration = track1.duration;
+	duration = audio.duration;
 }
-
-//--------------- DATABASE ---------------
-const userData = (id, name, email) =>
-  db.collection("users").doc().set({
-    id,
-    name,
-    email,
-  });
-
 
 //--------------- SEARCH BAR OPTIONS ---------------
 searchBar.addEventListener("click", function()
@@ -54,29 +47,30 @@ document.addEventListener("click", function(e)
     } 
 }, false);
 
+
 //--------------- OPEN / CLOSE FORMS WINDOWS ---------------
 logIn.addEventListener("click", function()
 {
     document.getElementById("formTitle").innerHTML = "Log In";
     document.getElementById("formLog").style.display = "block";
     document.getElementById("formSign").style.display = "none";
-})
+});
 
 signUp.addEventListener("click", function()
 {
     document.getElementById("formTitle").innerHTML = "Sign Up";
     document.getElementById("formSign").style.display = "block";
     document.getElementById("formLog").style.display = "none";
-})
+});
 
 closeBtnForm.addEventListener("click", function()
 {   
     formSign.reset();
     formLog.reset();
     
-})
+});
 
-//--------------- LOGIN / SIGN WITH FIREBASE ---------------
+//--------------- LOGIN WITH FIREBASE ---------------
 formLog.addEventListener("submit", (e) =>
 {
     e.preventDefault();
@@ -95,6 +89,7 @@ formLog.addEventListener("submit", (e) =>
             })
 })
 
+//--------------- SIGN UP WITH FIREBASE ---------------
 formSign.addEventListener("submit", (e) =>
 {
     e.preventDefault();
@@ -110,7 +105,7 @@ formSign.addEventListener("submit", (e) =>
             .then(userCredential =>
             {
                 console.log("SE REGISTRO");
-
+                
                 let user = firebase.auth().currentUser;
                 user.updateProfile({
                 displayName: nameSign,
@@ -120,19 +115,15 @@ formSign.addEventListener("submit", (e) =>
                 // An error happened.
                 });
                 
-                userData(idUser,nameSign,emailSign);
-                console.log(idUser);
-                console.log(nameSign);
-                console.log(emailSign);
-                idUser++;
                 formSign.reset();
                 window.open("user.html","_blank");
             })
     }
 })
 
-// list for auth state changes
-auth.onAuthStateChanged((user) => {
+//--------------- LIST FOR AUTH STATE CHANGES ---------------
+auth.onAuthStateChanged((user) => 
+{
   if (user) {
     console.log("SESION INICIADA");
 
@@ -141,8 +132,9 @@ auth.onAuthStateChanged((user) => {
   }
 });
 
-// Login with Google
-googleBtn.addEventListener("click", (e) => {
+//--------------- LOGIN WITH GOOGLE ---------------
+googleBtn.addEventListener("click", (e) => 
+{
   e.preventDefault();
   formSign.reset();
 
@@ -156,85 +148,90 @@ googleBtn.addEventListener("click", (e) => {
   })
 });
 
-//--------------- PLAY ---------------
-function playAudio(track, playMusic, pauseMusic, progress, current)
+function playAudio(audio,playMusic,pauseMusic,progress,currentTime)
 {
-    track.play();
-    intervalProgress = setInterval(trackTime, 1000, track, progress, current);
+    audio.play();
+    intervalProgress = setInterval(audioTime, 1000, audio, progress, currentTime);
     playMusic.style.display = "none";
     pauseMusic.style.display = "block";
+    console.log("PLAY");
 }
 
-//--------------- PAUSE ---------------
-function pauseAudio(track, playMusic, pauseMusic)
+function pauseAudio(audio,playMusic,pauseMusic)
 {
-    track.pause();
+    audio.pause();
     clearInterval(intervalProgress);
-    pauseMusic.style.display = "none";
     playMusic.style.display = "block";
+    pauseMusic.style.display = "none";
+    console.log("PAUSE");
 }
 
-//--------------- REDO ---------------
-function redoAudio(track)
+function redoAudio(audio)
 {
-  track.currentTime = 0;
-  if(track.pause())
-    track.pause();
-  else
-    track.play();
-  
-  seconds = 0;
-  minutes = 0;
+    audio.currentTime = 0;
+    if(audio.pause())
+        audio.pause();
+    else
+        audio.play();
+    
+    seconds = 0;
+    minutes = 0;
+    console.log("REDO");
 }
 
-//--------------- VOLUME ---------------
-function volumeAudio(track, n, volumeMusic, volumeMute)
+function volumeAudio(audio,volumeMusic,muteMusic)
 {
     volumeMusic.style.display = "none";
-    volumeMute.style.display = "block";
-    tempVolume[n] = track.volume;
-    track.volume = 0;
+    muteMusic.style.display = "block";
+    tempVolume = audio.volume;
+    audio.volume = 0;
 }
 
-function volumeMute(track, n, volumeMusic, volumeMute)
+function muteAudio(audio,volumeMusic,muteMusic)
 {
     volumeMusic.style.display = "block";
-    volumeMute.style.display = "none";
-    track.volume = tempVolume[n];
+    muteMusic.style.display = "none";
+    audio.volume = tempVolume;
 }
 
-//--------------- VOLUME LEVEL ---------------
-function volumeLevel(track, volume)
+function volumeLevel(audio,volume,volumeMusic,muteMusic)
 {
     volume.oninput = (e) =>
     {
-        track.volume = e.target.value;
+        audio.volume = e.target.value;
+        volumeMusic.style.display = "block";
+        muteMusic.style.display = "none";
     }
 }
 
-//--------------- TRACK DURATION ---------------
-function trackDuration(track, total)
+audio.addEventListener("loadedmetadata", function()
 {
-    track.addEventListener("loadedmetadata", function()
-    {
-        let minutes = parseInt(track.duration/60);
-        let seconds = track.duration - (minutes*60);
-        let duration = minutes + ":" + parseInt(seconds);
+    audioDuration(totalTime1);
+    audioDuration(totalTime2);
+    audioDuration(totalTime3);
+})  
 
-        if(minutes > 9)
-            total.innerText = "/" + duration;
-        else
-            total.innerText = "/0" + duration;
-    })
+function audioDuration(totalTime)
+{   console.log("Total Duration")
+    let totalMinutes = parseInt(audio.duration/60);
+    let totalSeconds = audio.duration - (totalMinutes*60);
+    let totalDuration = totalMinutes + ":" + parseInt(totalSeconds);
+
+    if(totalSeconds < 10)
+        totalDuration = totalMinutes + ":0" + parseInt(totalSeconds);
+    else
+        totalTime.innerHTML = "/0" + totalDuration;
+    if(totalMinutes > 9)
+        totalTime.innerHTML = "/" + totalDuration;
+    else
+        totalTime.innerHTML = "/0" + totalDuration;
 }
 
-//--------------- TRACK LOAD ---------------
-function trackTime(track, progress, current)
+function audioTime(audio, progress, current)
 {   
-    
 	if(duration>0)
 	{
-        let porcentaje = track.currentTime*100 / duration;
+        let porcentaje = audio.currentTime*100 / duration;
 
         if(porcentaje < 100)
             seconds++;
@@ -265,10 +262,6 @@ function trackTime(track, progress, current)
 	}
 }
 
-trackDuration(track1, document.getElementById("totalTime"));
-trackDuration(track2, document.getElementById("totalTime2"));
-trackDuration(track3, document.getElementById("totalTime3"));
-
 // player.innerHTML = `
       //         <div class="music">
       //           <audio id="audioLoad">
@@ -296,9 +289,3 @@ trackDuration(track3, document.getElementById("totalTime3"));
       //             <button class="btn btn-warning" id="deleteMusic" onclick="deleteAudio()">Delete</button>
       //         </div>
       //     `;
-
-
-
-
-
-
