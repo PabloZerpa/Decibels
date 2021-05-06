@@ -1,13 +1,178 @@
+*
+{
+    font-family: 'Roboto', sans-serif;
+}
 
-h2
+/* -------------------------------------------------- NAVEGATION --------------------------------------------------*/
+header
+{
+    position: fixed;
+    width: 100vw;
+    height: 72px;
+    z-index: 99;
+
+    nav
+    {
+        position: absolute;
+        background: #0B0D17;
+        left: 0%;
+        right: 0%;
+        top: 0%;
+        bottom: 0%;
+        box-shadow: 0px 1px 0px #E5E9F2;
+
+        .logo
+        {
+            position: absolute;
+            width: 100px;
+            height: 30px;
+            left: 165px;
+            top: calc(50% - 28px/2);
+        }
+
+        #logoName
+        {
+            position: absolute;
+            font-size: 24px;
+            font-weight: bolder;
+            left: 40%;
+            right: 0%;
+            top: 10%;
+            bottom: 10%;
+
+            a
+            {
+                color: #EA741F;
+                text-decoration: none;
+            }
+        }
+
+        #logoImg
+        {
+            position: absolute;
+            color: #EA741F;
+            font-size: 30px;
+            left: 0%;
+            right: 73.33%;
+            top: 0%;
+            bottom: 0%;
+        }
+
+        .navLinks
+        {
+            color: #FFFFFF;
+            list-style: none;
+            font-weight: bolder;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1%;
+            
+            li
+            {
+                margin-right: 25px;
+            }
+        
+            a
+            {
+                color: #FFFFFF;
+            }
+        }
+
+        /* -------------------------------------------------- SEARCH BAR --------------------------------------------------*/
+        .search
+        {
+            position: relative;
+            margin: 0 0 0 10px;
+        }
+        
+        #searchOptions
+        {
+            position: absolute;
+            display: none;
+            width: 200px;
+            top: 38px;
+            list-style: none;
+            background-color: gray;
+            padding: 0;
+        
+            button
+            {
+                width: 100%;
+                border: 1px solid #fff;
+                background-color: rgb(73, 129, 194);
+        
+                &:hover
+                {
+                    opacity: .5;
+                }
+            }
+        }
+        
+        
+        #searchBar
+        {
+            border-bottom-right-radius: 0px;
+            border-top-right-radius: 0px;
+            border: none;
+        }
+        
+        #searchIcon
+        {
+            border-radius: 0;
+            border: 1px #FFFFFF solid;
+        
+            &:hover
+            {
+                background-color: #EA741F;
+            }
+        }
+        
+        
+        .navBtn
+        {
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 0px;
+            left: 75%;
+            top: calc(50% - 40px/2);
+        
+            button
+            {
+                width: 90px;
+                height: 35px;
+                margin-right: 25px;
+                color: #FFFFFF;
+                font-weight: bolder;
+                border: none;
+                background-color: #EA741F;
+            
+                &:hover
+                {
+                    background-color: #c75d12;
+                    color: #000000;
+                    transition: .5s;
+                }
+            }
+        }
+    }
+}
+
+#userName
 {
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding-top: 85px;
+    font-size: 40px;
 }
 
 .userContent
 {
-    margin-top: 50px;
+    margin-top: 25px;
     padding: 0;
     width: 400px;
     display: grid;
@@ -15,11 +180,12 @@ h2
     grid-template-rows: 1fr;
     gap: 100px;
 
+
     .uploadFile
     {
         width: 300px;
-        height: 450px;
-        margin: 20px 0 0 50px;
+        height: 350px;
+        margin: 40px 0 0 50px;
         background-color: rgb(129, 129, 129);
         border-radius: 10px;
         display: flex;
@@ -40,27 +206,6 @@ h2
             border-radius: 5px;
             border: none;
         }
-
-        .selectArea
-        {
-            border: 2px solid #000;
-            border-radius: 5px;
-            padding: 8px;
-            margin-bottom: 10px;
-            background-color: rgb(179, 179, 179);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            select
-            {
-                border-radius: 5px;
-                border: none;
-                width: 200px;
-            }
-        }
-
     
         .titleAudio
         {
@@ -105,152 +250,349 @@ h2
 
         #formAudio
         {
-            display: none;
+            display: block;
         }
     }
 
-    .allList
+.playList
+{
+    width: 540px;
+    height: 200px;
+    border-radius: 10px;
+    background-color: #EA741F;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .music
     {
-        display: flex;
-        align-items: center;
+        color: white;
+        width: 500px;
+        height: 240px;
+        position: relative;
+        z-index: 2;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0px 3px 15px -1px rgba(0,0,0,0.5);
+        margin: 30px;
 
-        .playlist
+        .overlay 
         {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0 10px 0 10px;
+            position: absolute;
+            height: calc(100% + 1px);
+            width: calc(100% + 1px);
+            z-index: 2;
+            background: -moz-linear-gradient(-45deg, #333 0%, #222 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(-45deg, #333 0%,#222 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(135deg, #333 0%,#222 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            opacity: 1;
+        }
 
-            .playlistTitle, .playlistInput
-            {
-                position: absolute;
-                top: 20%;
-                color: #000;
-                border: none;
-                font-size: 25px;
-            }
+        .musicContent 
+        {
+            text-align: center;
+            position: relative;
+            z-index: 3;
     
-            .playlistInput
+            h2
             {
-                display: none;
-                text-align: center;
-                background-color: rgb(165, 165, 165);
+                font-size: 1.4em;
+                margin: 35px 0 0 0;
+                font-weight: 600;
             }
-            
-            .playlistContent
+                
+            h3 
             {
-                width: 500px;
-                height: 300px;
-                background-color: rgb(129, 129, 129);
-                border-radius: 5px;
-                margin-top: 20px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-    
-                .music:first-child
-                {
-                    margin-top: 80px;
-                }
+                margin: 7px 0 15px 0;
+                font-size: 1em;
+                opacity: .4;
+            }
         
-                .music
+            .progress
+            {
+                margin: 0 0 15px 0;
+    
+                input
                 {
-                    position: relative;
-                    width: 450px;
-                    height: 200px;
-                    margin-top: 40px;
-                    background-color: rgb(228, 153, 55);
+                    width: 100%;
+                    background: -moz-linear-gradient(left, #0e61ce 0%, #EA741F 100%); /*#3498db FF3.6-15 */
+                    background: -webkit-linear-gradient(left, #0e61ce 0%,#EA741F 100%); /* Chrome10-25,Safari5.1-6 */
+                    background: linear-gradient(to right, #0e61ce 0%,#EA741F 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    appearance:         none;
+                }
+                        
+                input::-webkit-slider-thumb 
+                {
+                    -webkit-appearance: none;
+                    height: 12px;
+                    width: 12px;
                     border-radius: 10px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    box-shadow: 5px 5px 5px#000;
-                      
-                    .progress
-                    {
-                        margin-top: 20px;
-                        width: 80%;
-                    }
+                    background: #ffffff;
+                    cursor: pointer;
+                }
+            }
+        
+            .musicControls
+            {
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                     
-                    .musicControl
+                .musicColumn 
+                {
+                    float: left;
+                    margin-left: .75em;
+                    
+                    &:nth-child(1)
                     {
-                        margin: 5px 5px 0 5px;
+                        position: absolute;
+                        left: 20%;
+                    }
+                
+                    &:nth-child(2)
+                    {
+                        font-size: 1.8em;
+                        position: absolute;
+                        left: 27%;
+                    }
+                
+                    &:nth-child(5)
+                    {
+                        font-size: 1.8em;
+                        position: absolute;
+                        left: 55%;
+                    }
+                
+                    &:nth-child(3) 
+                    {
+                        font-size: 2em;
+                        position: absolute;
+                        left: 40%;
+                    }
+                
+                    &:nth-child(4) 
+                    {
+                        font-size: 2em;
+                        position: absolute;
+                        left: 40%;
+                        /* color: #9b59b6; */
+                    }
+            
+                    i 
+                    {
+                        margin: 0 5px;
+                        cursor: pointer;
+                    }
+            
+                    .musicVolume
+                    {
                         display: flex;
-                        justify-content: space-between;
-                        align-items: center;
+                        flex-direction: column;
                 
-                        i
-                        {
-                            cursor: pointer;
-                        }
-                        
-                        .redoMusic
-                        {
-                            position: absolute;
-                            bottom: 35%;
-                            left: 15%;
-                        }
-                        
-                        .pauseMusic, .playMusic
-                        {
-                            position: absolute;
-                            bottom: 35%;
-                            left: 10%;
-                        }
-                
-                        .volumeControl:hover > .volume
+                        &:hover > #volume
                         {
                             display: block;
                         }
-                
-                        
-                        .volumeMusic, .volumeMute
-                        {
-                            position: absolute;
-                            bottom: 35%;
-                            left: 25%;
-                        }
-                        
-                        .volume
-                        {
-                            display: none;
-                            position: absolute;
-                            bottom: 35%;
-                            left: 29%;
-                        }
-                        
-                        .timeMusic
-                        {
-                            position: absolute;
-                            bottom: 23%;
-                            left: 70%;
-                            display: flex;
-                        }
             
-                    }
+                        #volumeMusic
+                        {
+                            position: absolute;
+                            bottom: 10%;
+                            left: 70%;
+                        }
                     
-                    #deleteMusic, #editMusic
-                    {
-                        width: 80px;
-                        height: 30px;
-                        position: absolute;
-                        bottom: 5%;
-                        left: 27.5%;
-                    }
+                        #muteMusic
+                        {
+                            position: absolute;
+                            bottom: 10%;
+                            left: 70%;
+                        }
                     
-                    #editMusic
+                        #volume
+                        {
+                            position: absolute;
+                            bottom: 58%;
+                            left: 60%;
+                            display: none;
+                            transform: rotate(-90deg);
+                        }
+                    }
+
+                    &:hover
                     {
-                        left: 55%;
+                        color: #EA741F;
                     }
                 }
-            }
+        
+                .musicTime
+                {
+                    display: flex;
+                    font-weight: bolder;
+                    font-size: 16px;
+                    position: absolute;
+                    right: 3%;
+                    bottom: -3%;
+                }
 
-            .deletePlaylist
-            {
-                background-color: rgb(119, 18, 18);
+                button
+                {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 80px;
+                    height: 30px;
+                    margin: 110px 15px 0 15px;
+                }
             }
-
         }
-
     }
 }
+
+}
+
+    // .allList
+    // {
+    //     display: flex;
+    //     align-items: center;
+
+    //     .playlist
+    //     {
+    //         display: flex;
+    //         flex-direction: column;
+    //         align-items: center;
+    //         margin: 0 10px 0 10px;
+
+    //         .playlistTitle, .playlistInput
+    //         {
+    //             position: absolute;
+    //             top: 20%;
+    //             color: #000;
+    //             border: none;
+    //             font-size: 25px;
+    //         }
+    
+    //         .playlistInput
+    //         {
+    //             display: none;
+    //             text-align: center;
+    //             background-color: rgb(165, 165, 165);
+    //         }
+            
+    //         .playlistContent
+    //         {
+    //             width: 500px;
+    //             height: 300px;
+    //             background-color: rgb(129, 129, 129);
+    //             border-radius: 5px;
+    //             margin-top: 20px;
+    //             display: flex;
+    //             flex-direction: column;
+    //             align-items: center;
+    
+    //             .music:first-child
+    //             {
+    //                 margin-top: 80px;
+    //             }
+        
+    //             .music
+    //             {
+    //                 position: relative;
+    //                 width: 450px;
+    //                 height: 200px;
+    //                 margin-top: 40px;
+    //                 background-color: rgb(228, 153, 55);
+    //                 border-radius: 10px;
+    //                 display: flex;
+    //                 flex-direction: column;
+    //                 align-items: center;
+    //                 box-shadow: 5px 5px 5px#000;
+                      
+    //                 .progress
+    //                 {
+    //                     margin-top: 20px;
+    //                     width: 80%;
+    //                 }
+                    
+    //                 .musicControl
+    //                 {
+    //                     margin: 5px 5px 0 5px;
+    //                     display: flex;
+    //                     justify-content: space-between;
+    //                     align-items: center;
+                
+    //                     i
+    //                     {
+    //                         cursor: pointer;
+    //                     }
+                        
+    //                     .redoMusic
+    //                     {
+    //                         position: absolute;
+    //                         bottom: 35%;
+    //                         left: 15%;
+    //                     }
+                        
+    //                     .pauseMusic, .playMusic
+    //                     {
+    //                         position: absolute;
+    //                         bottom: 35%;
+    //                         left: 10%;
+    //                     }
+                
+    //                     .volumeControl:hover > .volume
+    //                     {
+    //                         display: block;
+    //                     }
+                
+                        
+    //                     .volumeMusic, .volumeMute
+    //                     {
+    //                         position: absolute;
+    //                         bottom: 35%;
+    //                         left: 25%;
+    //                     }
+                        
+    //                     .volume
+    //                     {
+    //                         display: none;
+    //                         position: absolute;
+    //                         bottom: 35%;
+    //                         left: 29%;
+    //                     }
+                        
+    //                     .timeMusic
+    //                     {
+    //                         position: absolute;
+    //                         bottom: 23%;
+    //                         left: 70%;
+    //                         display: flex;
+    //                     }
+            
+    //                 }
+                    
+    //                 #deleteMusic, #editMusic
+    //                 {
+    //                     width: 80px;
+    //                     height: 30px;
+    //                     position: absolute;
+    //                     bottom: 5%;
+    //                     left: 27.5%;
+    //                 }
+                    
+    //                 #editMusic
+    //                 {
+    //                     left: 55%;
+    //                 }
+    //             }
+    //         }
+
+    //         .deletePlaylist
+    //         {
+    //             background-color: rgb(119, 18, 18);
+    //         }
+
+    //     }
+
+    // }

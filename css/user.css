@@ -1,10 +1,154 @@
-h2 {
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* -------------------------------------------------- NAVEGATION --------------------------------------------------*/
+header {
+  position: fixed;
+  width: 100vw;
+  height: 72px;
+  z-index: 99;
+}
+
+header nav {
+  position: absolute;
+  background: #0B0D17;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  box-shadow: 0px 1px 0px #E5E9F2;
+  /* -------------------------------------------------- SEARCH BAR --------------------------------------------------*/
+}
+
+header nav .logo {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  left: 165px;
+  top: calc(50% - 28px/2);
+}
+
+header nav #logoName {
+  position: absolute;
+  font-size: 24px;
+  font-weight: bolder;
+  left: 40%;
+  right: 0%;
+  top: 10%;
+  bottom: 10%;
+}
+
+header nav #logoName a {
+  color: #EA741F;
+  text-decoration: none;
+}
+
+header nav #logoImg {
+  position: absolute;
+  color: #EA741F;
+  font-size: 30px;
+  left: 0%;
+  right: 73.33%;
+  top: 0%;
+  bottom: 0%;
+}
+
+header nav .navLinks {
+  color: #FFFFFF;
+  list-style: none;
+  font-weight: bolder;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1%;
+}
+
+header nav .navLinks li {
+  margin-right: 25px;
+}
+
+header nav .navLinks a {
+  color: #FFFFFF;
+}
+
+header nav .search {
+  position: relative;
+  margin: 0 0 0 10px;
+}
+
+header nav #searchOptions {
+  position: absolute;
+  display: none;
+  width: 200px;
+  top: 38px;
+  list-style: none;
+  background-color: gray;
+  padding: 0;
+}
+
+header nav #searchOptions button {
+  width: 100%;
+  border: 1px solid #fff;
+  background-color: #4981c2;
+}
+
+header nav #searchOptions button:hover {
+  opacity: .5;
+}
+
+header nav #searchBar {
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  border: none;
+}
+
+header nav #searchIcon {
+  border-radius: 0;
+  border: 1px #FFFFFF solid;
+}
+
+header nav #searchIcon:hover {
+  background-color: #EA741F;
+}
+
+header nav .navBtn {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  left: 75%;
+  top: calc(50% - 40px/2);
+}
+
+header nav .navBtn button {
+  width: 90px;
+  height: 35px;
+  margin-right: 25px;
+  color: #FFFFFF;
+  font-weight: bolder;
+  border: none;
+  background-color: #EA741F;
+}
+
+header nav .navBtn button:hover {
+  background-color: #c75d12;
+  color: #000000;
+  transition: .5s;
+}
+
+#userName {
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding-top: 85px;
+  font-size: 40px;
 }
 
 .userContent {
-  margin-top: 50px;
+  margin-top: 25px;
   padding: 0;
   width: 400px;
   display: grid;
@@ -15,8 +159,8 @@ h2 {
 
 .userContent .uploadFile {
   width: 300px;
-  height: 450px;
-  margin: 20px 0 0 50px;
+  height: 350px;
+  margin: 40px 0 0 50px;
   background-color: #818181;
   border-radius: 10px;
   display: flex;
@@ -35,24 +179,6 @@ h2 {
   height: 25px;
   border-radius: 5px;
   border: none;
-}
-
-.userContent .uploadFile .selectArea {
-  border: 2px solid #000;
-  border-radius: 5px;
-  padding: 8px;
-  margin-bottom: 10px;
-  background-color: #b3b3b3;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.userContent .uploadFile .selectArea select {
-  border-radius: 5px;
-  border: none;
-  width: 200px;
 }
 
 .userContent .uploadFile .titleAudio {
@@ -93,128 +219,183 @@ h2 {
 }
 
 .userContent .uploadFile #formAudio {
-  display: none;
-}
-
-.userContent .allList {
-  display: flex;
-  align-items: center;
-}
-
-.userContent .allList .playlist {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 10px 0 10px;
-}
-
-.userContent .allList .playlist .playlistTitle, .userContent .allList .playlist .playlistInput {
-  position: absolute;
-  top: 20%;
-  color: #000;
-  border: none;
-  font-size: 25px;
-}
-
-.userContent .allList .playlist .playlistInput {
-  display: none;
-  text-align: center;
-  background-color: #a5a5a5;
-}
-
-.userContent .allList .playlist .playlistContent {
-  width: 500px;
-  height: 300px;
-  background-color: #818181;
-  border-radius: 5px;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.userContent .allList .playlist .playlistContent .music:first-child {
-  margin-top: 80px;
-}
-
-.userContent .allList .playlist .playlistContent .music {
-  position: relative;
-  width: 450px;
-  height: 200px;
-  margin-top: 40px;
-  background-color: #e49937;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 5px 5px 5px #000;
-}
-
-.userContent .allList .playlist .playlistContent .music .progress {
-  margin-top: 20px;
-  width: 80%;
-}
-
-.userContent .allList .playlist .playlistContent .music .musicControl {
-  margin: 5px 5px 0 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.userContent .allList .playlist .playlistContent .music .musicControl i {
-  cursor: pointer;
-}
-
-.userContent .allList .playlist .playlistContent .music .musicControl .redoMusic {
-  position: absolute;
-  bottom: 35%;
-  left: 15%;
-}
-
-.userContent .allList .playlist .playlistContent .music .musicControl .pauseMusic, .userContent .allList .playlist .playlistContent .music .musicControl .playMusic {
-  position: absolute;
-  bottom: 35%;
-  left: 10%;
-}
-
-.userContent .allList .playlist .playlistContent .music .musicControl .volumeControl:hover > .volume {
   display: block;
 }
 
-.userContent .allList .playlist .playlistContent .music .musicControl .volumeMusic, .userContent .allList .playlist .playlistContent .music .musicControl .volumeMute {
-  position: absolute;
-  bottom: 35%;
-  left: 25%;
-}
-
-.userContent .allList .playlist .playlistContent .music .musicControl .volume {
-  display: none;
-  position: absolute;
-  bottom: 35%;
-  left: 29%;
-}
-
-.userContent .allList .playlist .playlistContent .music .musicControl .timeMusic {
-  position: absolute;
-  bottom: 23%;
-  left: 70%;
+.userContent .playList {
+  width: 540px;
+  height: 200px;
+  border-radius: 10px;
+  background-color: #EA741F;
+  margin-top: 40px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.userContent .allList .playlist .playlistContent .music #deleteMusic, .userContent .allList .playlist .playlistContent .music #editMusic {
-  width: 80px;
-  height: 30px;
+.userContent .playList .music {
+  color: white;
+  width: 500px;
+  height: 240px;
+  position: relative;
+  z-index: 2;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 3px 15px -1px rgba(0, 0, 0, 0.5);
+  margin: 30px;
+}
+
+.userContent .playList .music .overlay {
   position: absolute;
-  bottom: 5%;
-  left: 27.5%;
+  height: calc(100% + 1px);
+  width: calc(100% + 1px);
+  z-index: 2;
+  background: -moz-linear-gradient(-45deg, #333 0%, #222 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #333 0%, #222 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #333 0%, #222 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  opacity: 1;
 }
 
-.userContent .allList .playlist .playlistContent .music #editMusic {
+.userContent .playList .music .musicContent {
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+.userContent .playList .music .musicContent h2 {
+  font-size: 1.4em;
+  margin: 35px 0 0 0;
+  font-weight: 600;
+}
+
+.userContent .playList .music .musicContent h3 {
+  margin: 7px 0 15px 0;
+  font-size: 1em;
+  opacity: .4;
+}
+
+.userContent .playList .music .musicContent .progress {
+  margin: 0 0 15px 0;
+}
+
+.userContent .playList .music .musicContent .progress input {
+  width: 100%;
+  background: -moz-linear-gradient(left, #0e61ce 0%, #EA741F 100%);
+  /*#3498db FF3.6-15 */
+  background: -webkit-linear-gradient(left, #0e61ce 0%, #EA741F 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #0e61ce 0%, #EA741F 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  appearance: none;
+}
+
+.userContent .playList .music .musicContent .progress input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 10px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.userContent .playList .music .musicContent .musicControls {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userContent .playList .music .musicContent .musicControls .musicColumn {
+  float: left;
+  margin-left: .75em;
+}
+
+.userContent .playList .music .musicContent .musicControls .musicColumn:nth-child(1) {
+  position: absolute;
+  left: 20%;
+}
+
+.userContent .playList .music .musicContent .musicControls .musicColumn:nth-child(2) {
+  font-size: 1.8em;
+  position: absolute;
+  left: 27%;
+}
+
+.userContent .playList .music .musicContent .musicControls .musicColumn:nth-child(5) {
+  font-size: 1.8em;
+  position: absolute;
   left: 55%;
 }
 
-.userContent .allList .playlist .deletePlaylist {
-  background-color: #771212;
+.userContent .playList .music .musicContent .musicControls .musicColumn:nth-child(3) {
+  font-size: 2em;
+  position: absolute;
+  left: 40%;
+}
+
+.userContent .playList .music .musicContent .musicControls .musicColumn:nth-child(4) {
+  font-size: 2em;
+  position: absolute;
+  left: 40%;
+  /* color: #9b59b6; */
+}
+
+.userContent .playList .music .musicContent .musicControls .musicColumn i {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.userContent .playList .music .musicContent .musicControls .musicColumn .musicVolume {
+  display: flex;
+  flex-direction: column;
+}
+
+.userContent .playList .music .musicContent .musicControls .musicColumn .musicVolume:hover > #volume {
+  display: block;
+}
+
+.userContent .playList .music .musicContent .musicControls .musicColumn .musicVolume #volumeMusic {
+  position: absolute;
+  bottom: 10%;
+  left: 70%;
+}
+
+.userContent .playList .music .musicContent .musicControls .musicColumn .musicVolume #muteMusic {
+  position: absolute;
+  bottom: 10%;
+  left: 70%;
+}
+
+.userContent .playList .music .musicContent .musicControls .musicColumn .musicVolume #volume {
+  position: absolute;
+  bottom: 58%;
+  left: 60%;
+  display: none;
+  transform: rotate(-90deg);
+}
+
+.userContent .playList .music .musicContent .musicControls .musicColumn:hover {
+  color: #EA741F;
+}
+
+.userContent .playList .music .musicContent .musicControls .musicTime {
+  display: flex;
+  font-weight: bolder;
+  font-size: 16px;
+  position: absolute;
+  right: 3%;
+  bottom: -3%;
+}
+
+.userContent .playList .music .musicContent .musicControls button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 30px;
+  margin: 110px 15px 0 15px;
 }
 /*# sourceMappingURL=user.css.map */

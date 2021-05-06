@@ -262,30 +262,23 @@ function audioTime(audio, progress, current)
 	}
 }
 
-// player.innerHTML = `
-      //         <div class="music">
-      //           <audio id="audioLoad">
-      //             <source src="${audio.path}" type="audio/mpeg">
-      //           </audio>
-      //           <h6 id="titleMusic">${audio.title}</h6>
-      //           <p>${audio.id}</p>
-      //           <div class="progress">
-      //             <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
-      //           </div>
-      //           <div class="musicControl">
-      //             <i class="fas fa-play playMusic" id="playMusic" '></i>
-      //             <i class="fas fa-pause pauseMusic" id="pauseMusic" " style="display: none;"></i>
-      //             <i class="fas fa-redo-alt redoMusic" id="redoMusic" "></i>
-      //             <div class="volumeControl">
-      //               <i class="fas fa-volume-up volumeMusic" id="volumeMusic" onclick="volumeAudio(${audio})"></i>
-      //               <i class="fas fa-volume-mute volumeMute" id="volumeMute" onclick="volumeMute(${audio})" style="display: none;"></i>
-      //               <input type="range" name="volume" class="volume" id="volume" onclick="volumeLevel(${audio})" min="0" max="1" step="0.01" value="0.5">
-      //             </div>
-      //             <div class="timeMusic">
-      //               <p id="currentTime">00:00</p>
-      //               <p id="totalTime">/00:00</p>
-      //             </div>
-      //             <button class="btn btn-primary" id="editMusic" onclick="editAudio()">Edit</button>
-      //             <button class="btn btn-warning" id="deleteMusic" onclick="deleteAudio()">Delete</button>
-      //         </div>
-      //     `;
+const hamburgerButton = document.getElementById('hamburger');
+const navList = document.getElementById('navLinks');
+const navBtn = document.getElementById('navBtn');
+const nav = document.getElementById('nav');
+
+function toggleButton() 
+{
+    if(navList.style.display == "block")
+    {
+        navList.style.display = "none";
+        navBtn.style.display = "none";
+    }
+    else
+    {
+        navList.style.display = "block";
+        navBtn.style.display = "block";
+    }
+}
+
+hamburgerButton.addEventListener('click', toggleButton);
