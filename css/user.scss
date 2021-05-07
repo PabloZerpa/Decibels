@@ -129,7 +129,6 @@ header
             }
         }
         
-        
         .navBtn
         {
             position: absolute;
@@ -283,9 +282,9 @@ header
             height: calc(100% + 1px);
             width: calc(100% + 1px);
             z-index: 2;
-            background: -moz-linear-gradient(-45deg, #333 0%, #222 100%); /* FF3.6-15 */
-            background: -webkit-linear-gradient(-45deg, #333 0%,#222 100%); /* Chrome10-25,Safari5.1-6 */
-            background: linear-gradient(135deg, #333 0%,#222 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            background: -moz-linear-gradient(-45deg, #333 0%, #222 100%);
+            background: -webkit-linear-gradient(-45deg, #333 0%,#222 100%);
+            background: linear-gradient(135deg, #333 0%,#222 100%);
             opacity: 1;
         }
 
@@ -316,9 +315,9 @@ header
                 input
                 {
                     width: 100%;
-                    background: -moz-linear-gradient(left, #0e61ce 0%, #EA741F 100%); /*#3498db FF3.6-15 */
-                    background: -webkit-linear-gradient(left, #0e61ce 0%,#EA741F 100%); /* Chrome10-25,Safari5.1-6 */
-                    background: linear-gradient(to right, #0e61ce 0%,#EA741F 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    background: -moz-linear-gradient(left, #0e61ce 0%, #EA741F 100%);
+                    background: -webkit-linear-gradient(left, #0e61ce 0%,#EA741F 100%);
+                    background: linear-gradient(to right, #0e61ce 0%,#EA741F 100%);
                     appearance:         none;
                 }
                         
@@ -451,148 +450,3 @@ header
 }
 
 }
-
-    // .allList
-    // {
-    //     display: flex;
-    //     align-items: center;
-
-    //     .playlist
-    //     {
-    //         display: flex;
-    //         flex-direction: column;
-    //         align-items: center;
-    //         margin: 0 10px 0 10px;
-
-    //         .playlistTitle, .playlistInput
-    //         {
-    //             position: absolute;
-    //             top: 20%;
-    //             color: #000;
-    //             border: none;
-    //             font-size: 25px;
-    //         }
-    
-    //         .playlistInput
-    //         {
-    //             display: none;
-    //             text-align: center;
-    //             background-color: rgb(165, 165, 165);
-    //         }
-            
-    //         .playlistContent
-    //         {
-    //             width: 500px;
-    //             height: 300px;
-    //             background-color: rgb(129, 129, 129);
-    //             border-radius: 5px;
-    //             margin-top: 20px;
-    //             display: flex;
-    //             flex-direction: column;
-    //             align-items: center;
-    
-    //             .music:first-child
-    //             {
-    //                 margin-top: 80px;
-    //             }
-        
-    //             .music
-    //             {
-    //                 position: relative;
-    //                 width: 450px;
-    //                 height: 200px;
-    //                 margin-top: 40px;
-    //                 background-color: rgb(228, 153, 55);
-    //                 border-radius: 10px;
-    //                 display: flex;
-    //                 flex-direction: column;
-    //                 align-items: center;
-    //                 box-shadow: 5px 5px 5px#000;
-                      
-    //                 .progress
-    //                 {
-    //                     margin-top: 20px;
-    //                     width: 80%;
-    //                 }
-                    
-    //                 .musicControl
-    //                 {
-    //                     margin: 5px 5px 0 5px;
-    //                     display: flex;
-    //                     justify-content: space-between;
-    //                     align-items: center;
-                
-    //                     i
-    //                     {
-    //                         cursor: pointer;
-    //                     }
-                        
-    //                     .redoMusic
-    //                     {
-    //                         position: absolute;
-    //                         bottom: 35%;
-    //                         left: 15%;
-    //                     }
-                        
-    //                     .pauseMusic, .playMusic
-    //                     {
-    //                         position: absolute;
-    //                         bottom: 35%;
-    //                         left: 10%;
-    //                     }
-                
-    //                     .volumeControl:hover > .volume
-    //                     {
-    //                         display: block;
-    //                     }
-                
-                        
-    //                     .volumeMusic, .volumeMute
-    //                     {
-    //                         position: absolute;
-    //                         bottom: 35%;
-    //                         left: 25%;
-    //                     }
-                        
-    //                     .volume
-    //                     {
-    //                         display: none;
-    //                         position: absolute;
-    //                         bottom: 35%;
-    //                         left: 29%;
-    //                     }
-                        
-    //                     .timeMusic
-    //                     {
-    //                         position: absolute;
-    //                         bottom: 23%;
-    //                         left: 70%;
-    //                         display: flex;
-    //                     }
-            
-    //                 }
-                    
-    //                 #deleteMusic, #editMusic
-    //                 {
-    //                     width: 80px;
-    //                     height: 30px;
-    //                     position: absolute;
-    //                     bottom: 5%;
-    //                     left: 27.5%;
-    //                 }
-                    
-    //                 #editMusic
-    //                 {
-    //                     left: 55%;
-    //                 }
-    //             }
-    //         }
-
-    //         .deletePlaylist
-    //         {
-    //             background-color: rgb(119, 18, 18);
-    //         }
-
-    //     }
-
-    // }

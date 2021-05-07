@@ -122,14 +122,8 @@ document.getElementById("audioFile").addEventListener("change", function(e)
   if(document.getElementById("title").value != "")
   {
     let audioPath = URL.createObjectURL(e.target.files[0]);
-    // titleMusic.innerText = document.getElementById("audioFile").files[0].name;
-    
-    //let audioSize = playlistContent.querySelectorAll('h5');
-    //idAudio = audioSize.length + 1;
-    
     const title = document.getElementById("title").value,
     path = audioPath;
-    //let currentList = select.selectedIndex;
     idAudio++;
   
     console.log(idAudio);console.log(title);console.log(path);
@@ -150,8 +144,6 @@ document.getElementById("addBtn").addEventListener("click", function(e)
     if(document.getElementById("url").value != "" && document.getElementById("title").value != "")
     {
       let audioPath = document.getElementById("url").value;
-      // let temp = playlistContent.querySelectorAll('h5')
-      // idAudio = temp.length + 1;
       idAudio++; 
   
       const title = document.getElementById("title").value,

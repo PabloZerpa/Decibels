@@ -251,11 +251,8 @@ header nav .navBtn button:hover {
   width: calc(100% + 1px);
   z-index: 2;
   background: -moz-linear-gradient(-45deg, #333 0%, #222 100%);
-  /* FF3.6-15 */
   background: -webkit-linear-gradient(-45deg, #333 0%, #222 100%);
-  /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(135deg, #333 0%, #222 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   opacity: 1;
 }
 
@@ -284,11 +281,8 @@ header nav .navBtn button:hover {
 .userContent .playList .music .musicContent .progress input {
   width: 100%;
   background: -moz-linear-gradient(left, #0e61ce 0%, #EA741F 100%);
-  /*#3498db FF3.6-15 */
   background: -webkit-linear-gradient(left, #0e61ce 0%, #EA741F 100%);
-  /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to right, #0e61ce 0%, #EA741F 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   appearance: none;
 }
 

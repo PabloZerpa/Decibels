@@ -181,16 +181,20 @@ export class AudioPlayer {
     {
       audio.sound.pause();
       deleteAudios(audio.title);
-      playlistContent.style.height = playlistContent.clientHeight - 225 + "px";
+      playlistContent.style.height = (playlistContent.clientHeight - 225) + "px";
       console.log("DELETE");
     });
 
-    const updateAudios = (id, updatedAudios) => db.collection("users").doc("Pablo Andres").collection('audios').doc(id).update(updatedAudios);
+    const updateAudios = (id, title, path) => db.collection("users").doc("Pablo Andres").collection('audios').doc(id).update({"title": title,"path" : path,});
     let editBtn = document.getElementById("editBtn" + audio.id);
     let currentEdit = editBtn.parentNode.parentNode.parentNode;
     editBtn.addEventListener("click", function()
     {
       audio.sound.pause();
+      clearInterval(intervalProgress);
+      playMusic.style.display = "block";
+      pauseMusic.style.display = "none";
+
       document.getElementById("title").value = audio.title;
       document.getElementById("url").value = audio.path;
       document.getElementById("addBtn").value = "Edit";
@@ -206,6 +210,9 @@ export class AudioPlayer {
           document.getElementById("musicTitle"+audio.id).innerHTML = document.getElementById("title").value;
           document.getElementById("musicPath"+audio.id).setAttribute("src", document.getElementById("url").value);
           console.log(document.getElementById("musicTitle"+audio.id));console.log(document.getElementById("musicPath"+audio.id))
+
+          updateAudios(audio.title, document.getElementById("title").value, document.getElementById("url").value);
+
           document.getElementById("title").value = "";
           document.getElementById("url").value = "";
           document.getElementById("addBtn").value = "Add";
