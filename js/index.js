@@ -1,5 +1,3 @@
-
-
 // NAV VARIABLES
 const searchBar = document.getElementById("searchBar");
 const searchOptions = document.getElementById("searchOptions");
@@ -28,6 +26,27 @@ audio.ondurationchange = function()
 	duration = audio.duration;
 }
 
+//----------------- MOBIL NAV --------------------------
+const hamburgerButton = document.getElementById('hamburger');
+const navList = document.getElementById('navLinks');
+const navBtn = document.getElementById('navBtn');
+const nav = document.getElementById('nav');
+
+function toggleButton() 
+{
+    if(navList.style.display == "block")
+    {
+        navList.style.display = "none";
+        navBtn.style.display = "none";
+    }
+    else
+    {
+        navList.style.display = "block";
+        navBtn.style.display = "block";
+    }
+}
+hamburgerButton.addEventListener('click', toggleButton);
+
 //--------------- SEARCH BAR OPTIONS ---------------
 searchBar.addEventListener("click", function()
 {   
@@ -35,7 +54,6 @@ searchBar.addEventListener("click", function()
         searchOptions.style.display = "block";
     else if(searchBar.style.display = "none")
         searchOptions.style.display = "block";
-    
 })
 
 document.addEventListener("click", function(e)
@@ -261,24 +279,3 @@ function audioTime(audio, progress, current)
         progress.style.width = parseInt(porcentaje) + "%";
 	}
 }
-
-const hamburgerButton = document.getElementById('hamburger');
-const navList = document.getElementById('navLinks');
-const navBtn = document.getElementById('navBtn');
-const nav = document.getElementById('nav');
-
-function toggleButton() 
-{
-    if(navList.style.display == "block")
-    {
-        navList.style.display = "none";
-        navBtn.style.display = "none";
-    }
-    else
-    {
-        navList.style.display = "block";
-        navBtn.style.display = "block";
-    }
-}
-
-hamburgerButton.addEventListener('click', toggleButton);

@@ -58,7 +58,7 @@ header
             bottom: 0%;
         }
 
-        .navLinks
+        .navUserLinks
         {
             color: #FFFFFF;
             list-style: none;
@@ -129,7 +129,7 @@ header
             }
         }
         
-        .navBtn
+        .navUserBtn
         {
             position: absolute;
             display: flex;
@@ -253,200 +253,256 @@ header
         }
     }
 
-.playList
-{
-    width: 540px;
-    height: 200px;
-    border-radius: 10px;
-    background-color: #EA741F;
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .music
+    .playList
     {
-        color: white;
-        width: 500px;
-        height: 240px;
-        position: relative;
-        z-index: 2;
-        border-radius: 5px;
-        overflow: hidden;
-        box-shadow: 0px 3px 15px -1px rgba(0,0,0,0.5);
-        margin: 30px;
+        width: 540px;
+        height: 200px;
+        border-radius: 10px;
+        background-color: #EA741F;
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-        .overlay 
+        .music
         {
-            position: absolute;
-            height: calc(100% + 1px);
-            width: calc(100% + 1px);
-            z-index: 2;
-            background: -moz-linear-gradient(-45deg, #333 0%, #222 100%);
-            background: -webkit-linear-gradient(-45deg, #333 0%,#222 100%);
-            background: linear-gradient(135deg, #333 0%,#222 100%);
-            opacity: 1;
-        }
-
-        .musicContent 
-        {
-            text-align: center;
+            color: white;
+            width: 500px;
+            height: 240px;
             position: relative;
-            z-index: 3;
-    
-            h2
+            z-index: 2;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0px 3px 15px -1px rgba(0,0,0,0.5);
+            margin: 30px;
+
+            .overlay 
             {
-                font-size: 1.4em;
-                margin: 35px 0 0 0;
-                font-weight: 600;
+                position: absolute;
+                height: calc(100% + 1px);
+                width: calc(100% + 1px);
+                z-index: 2;
+                background: -moz-linear-gradient(-45deg, #333 0%, #222 100%);
+                background: -webkit-linear-gradient(-45deg, #333 0%,#222 100%);
+                background: linear-gradient(135deg, #333 0%,#222 100%);
+                opacity: 1;
             }
-                
-            h3 
+
+            .musicContent 
             {
-                margin: 7px 0 15px 0;
-                font-size: 1em;
-                opacity: .4;
-            }
+                text-align: center;
+                position: relative;
+                z-index: 3;
         
-            .progress
-            {
-                margin: 0 0 15px 0;
-    
-                input
+                h2
                 {
-                    width: 100%;
-                    background: -moz-linear-gradient(left, #0e61ce 0%, #EA741F 100%);
-                    background: -webkit-linear-gradient(left, #0e61ce 0%,#EA741F 100%);
-                    background: linear-gradient(to right, #0e61ce 0%,#EA741F 100%);
-                    appearance:         none;
+                    font-size: 1.4em;
+                    margin: 35px 0 0 0;
+                    font-weight: 600;
                 }
-                        
-                input::-webkit-slider-thumb 
+                    
+                h3 
                 {
-                    -webkit-appearance: none;
-                    height: 12px;
-                    width: 12px;
-                    border-radius: 10px;
-                    background: #ffffff;
-                    cursor: pointer;
+                    margin: 7px 0 15px 0;
+                    font-size: 1em;
+                    opacity: .4;
                 }
-            }
-        
-            .musicControls
-            {
-                height: 50px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                    
-                .musicColumn 
-                {
-                    float: left;
-                    margin-left: .75em;
-                    
-                    &:nth-child(1)
-                    {
-                        position: absolute;
-                        left: 20%;
-                    }
-                
-                    &:nth-child(2)
-                    {
-                        font-size: 1.8em;
-                        position: absolute;
-                        left: 27%;
-                    }
-                
-                    &:nth-child(5)
-                    {
-                        font-size: 1.8em;
-                        position: absolute;
-                        left: 55%;
-                    }
-                
-                    &:nth-child(3) 
-                    {
-                        font-size: 2em;
-                        position: absolute;
-                        left: 40%;
-                    }
-                
-                    &:nth-child(4) 
-                    {
-                        font-size: 2em;
-                        position: absolute;
-                        left: 40%;
-                        /* color: #9b59b6; */
-                    }
             
-                    i 
+                .progress
+                {
+                    margin: 0 0 15px 0;
+        
+                    input
                     {
-                        margin: 0 5px;
+                        width: 100%;
+                        background: -moz-linear-gradient(left, #0e61ce 0%, #EA741F 100%);
+                        background: -webkit-linear-gradient(left, #0e61ce 0%,#EA741F 100%);
+                        background: linear-gradient(to right, #0e61ce 0%,#EA741F 100%);
+                        appearance:         none;
+                    }
+                            
+                    input::-webkit-slider-thumb 
+                    {
+                        -webkit-appearance: none;
+                        height: 12px;
+                        width: 12px;
+                        border-radius: 10px;
+                        background: #ffffff;
                         cursor: pointer;
                     }
+                }
             
-                    .musicVolume
+                .musicControls
+                {
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                        
+                    .musicColumn 
+                    {
+                        float: left;
+                        margin-left: .75em;
+                        
+                        &:nth-child(1)
+                        {
+                            position: absolute;
+                            left: 20%;
+                        }
+                    
+                        &:nth-child(2)
+                        {
+                            font-size: 1.8em;
+                            position: absolute;
+                            left: 27%;
+                        }
+                    
+                        &:nth-child(5)
+                        {
+                            font-size: 1.8em;
+                            position: absolute;
+                            left: 55%;
+                        }
+                    
+                        &:nth-child(3) 
+                        {
+                            font-size: 2em;
+                            position: absolute;
+                            left: 40%;
+                        }
+                    
+                        &:nth-child(4) 
+                        {
+                            font-size: 2em;
+                            position: absolute;
+                            left: 40%;
+                            /* color: #9b59b6; */
+                        }
+                
+                        i 
+                        {
+                            margin: 0 5px;
+                            cursor: pointer;
+                        }
+                
+                        .musicVolume
+                        {
+                            display: flex;
+                            flex-direction: column;
+                    
+                            &:hover > #volume
+                            {
+                                display: block;
+                            }
+                
+                            #volumeMusic
+                            {
+                                position: absolute;
+                                bottom: 10%;
+                                left: 70%;
+                            }
+                        
+                            #muteMusic
+                            {
+                                position: absolute;
+                                bottom: 10%;
+                                left: 70%;
+                            }
+                        
+                            #volume
+                            {
+                                position: absolute;
+                                bottom: 58%;
+                                left: 60%;
+                                display: none;
+                                transform: rotate(-90deg);
+                            }
+                        }
+
+                        &:hover
+                        {
+                            color: #EA741F;
+                        }
+                    }
+            
+                    .musicTime
                     {
                         display: flex;
-                        flex-direction: column;
-                
-                        &:hover > #volume
-                        {
-                            display: block;
-                        }
-            
-                        #volumeMusic
-                        {
-                            position: absolute;
-                            bottom: 10%;
-                            left: 70%;
-                        }
-                    
-                        #muteMusic
-                        {
-                            position: absolute;
-                            bottom: 10%;
-                            left: 70%;
-                        }
-                    
-                        #volume
-                        {
-                            position: absolute;
-                            bottom: 58%;
-                            left: 60%;
-                            display: none;
-                            transform: rotate(-90deg);
-                        }
+                        font-weight: bolder;
+                        font-size: 16px;
+                        position: absolute;
+                        right: 3%;
+                        bottom: -3%;
                     }
 
-                    &:hover
+                    button
                     {
-                        color: #EA741F;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 80px;
+                        height: 30px;
+                        margin: 110px 15px 0 15px;
                     }
-                }
-        
-                .musicTime
-                {
-                    display: flex;
-                    font-weight: bolder;
-                    font-size: 16px;
-                    position: absolute;
-                    right: 3%;
-                    bottom: -3%;
-                }
-
-                button
-                {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 80px;
-                    height: 30px;
-                    margin: 110px 15px 0 15px;
                 }
             }
         }
     }
 }
 
+/* -------------------------------------------------- MOBIL NAVEGATION --------------------------------------------------*/
+@media only screen and (max-width: 1120px)
+{
+    header
+    {
+        nav
+        {
+            background-color: #0B0D17;
+                
+            .hamburger 
+            {
+                display: block;
+                width: 40px;
+                height: 40px;
+                border: 0;
+                background-color: #EA741F;
+                color: #FFFFFF;
+                font-size: 30px;
+                position: absolute;
+                right: 8%;
+                top: 20%;
+            }
+
+            .navUserLinks {
+                display: none;
+                background-color: #0B0D17;
+                
+                li
+                {
+                    margin-top: 10px;
+                }
+            }
+
+            .search
+            {
+                margin: 10px 0 15px 0;
+
+                #searchBar
+                {
+                    width: 200px;
+                }
+            }
+
+            .navUserBtn {
+
+                display: none;
+                right: 76%;
+                top: 197px;
+            }
+        
+            .logo {
+                display: none;
+            }
+        }
+    }
 }

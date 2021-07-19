@@ -3,6 +3,29 @@
     font-family: 'Roboto', sans-serif;
 }
 
+html
+{
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar
+{
+    width: .60rem;
+    background-color: rgb(190, 190, 190);
+    border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color: #EA741F;
+    border-radius: .2rem;
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+    background-color: #aa5316;
+}
+
 /* -------------------------------------------------- NAVEGATION --------------------------------------------------*/
 header
 {
@@ -19,7 +42,7 @@ header
         right: 0%;
         top: 0%;
         bottom: 0%;
-        box-shadow: 0px 1px 0px #E5E9F2;
+        box-shadow: 0px 0px 5px 0px #000;
 
         .logo
         {
@@ -181,22 +204,25 @@ header
 
     #googleBtn, #googleRegister
     {
-        background-color: #fff;
+        background-color: rgb(175, 175, 175);
         color: gold;
+        border: none;
     }
     #microBtn, #microRegister
     {
-        background-color: #fff;
+        background-color: rgb(175, 175, 175);
         color: rgb(30, 93, 228);
+        border: none;
     }
     #appleBtn, #appleRegister
     {
-        background-color: #fff;
+        background-color: rgb(175, 175, 175);
         color: rgb(184, 17, 17);
+        border: none;
     }
     #closeBtnForm
     {
-        border-radius: 3px;
+        border-radius: 1px;
         background-color: rgb(160, 28, 28);
         color: #fff;
         border: none;
@@ -290,6 +316,7 @@ header
                 font-weight: bolder;
                 border: none;
                 background-color: #EA741F;
+                box-shadow: 0px 0px 3px 0px #000000;
         
                 &:hover
                 {
@@ -386,11 +413,18 @@ header
                 justify-content: center;
                 align-items: center;
 
+                h6
+                {
+                    font-weight: bold;
+                    margin-top: 3px;
+                }
+
                 img
                 {
                     width: 150px;
                     height: 150px;
                     cursor: pointer;
+                    box-shadow: 0px 0px 5px 0px #000000;
         
                     &:hover
                     {
@@ -711,6 +745,7 @@ footer
         width: 100vw;
         height: 250px;
         gap: 10em;
+        box-shadow: 0px 0px 5px 0px #000;
 
         #icon6
         {
@@ -801,7 +836,7 @@ footer
 }
 
 /* -------------------------------------------------- WIDTH 1240 PX --------------------------------------------------*/
-@media only screen and (max-width: 1240px)
+@media only screen and (min-width: 1240px)
 {
     header
     {

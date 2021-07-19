@@ -9,6 +9,27 @@ const logOut = document.getElementById("logOut");
 const playList = document.getElementById("playList");
 let idAudio = 0, idUser, userName;
 
+//----------------- MOBIL NAV --------------------------
+const hamburgerButton = document.getElementById('hamburgerUser');
+const navList = document.getElementById('navUserLinks');
+const navBtn = document.getElementById('navUserBtn');
+
+function toggleButton() 
+{
+    if(navList.style.display == "block")
+    {
+        navList.style.display = "none";
+        navBtn.style.display = "none";
+    }
+    else
+    {
+        navList.style.display = "block";
+        navBtn.style.display = "block";
+    }
+}
+
+hamburgerButton.addEventListener('click', toggleButton);
+
 //------------------ SEARCH BAR OPTIONS ------------------
 searchBar.addEventListener("click", function()
 {   
