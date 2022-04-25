@@ -1,3 +1,119 @@
+function addArtist()
+{
+    let artistGrid = document.getElementById("artistGrid");
+    let images = 
+    ["https://www.elnacional.cat/uploads/s1/13/32/17/88/europapress-3575490-nuevo-disco-daft-punk-1.jpeg",
+    "https://p4.wallpaperbetter.com/wallpaper/666/915/617/metallica-heavy-metal-metal-thrash-metal-wallpaper-preview.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnZkxbY5HBcP93IpIGaV0YG4HAdRfQSxJYNg&usqp=CAU",
+    "https://www.latercera.com/resizer/-54YK9C3H3KhD6hxvFLudV6LIds=/900x600/smart/arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/Z7VN22YU6NHWJPKLUQH5ZPZWPI.jpg",
+    "https://m.media-amazon.com/images/I/81vzCypTKXL._SS500_.jpg",
+    "https://vignette.wikia.nocookie.net/youtubepedia/images/7/75/Marshmello.jpg/revision/latest?cb=20190112082054&path-prefix=es",
+    "https://www.metal-hammer.de/wp-content/uploads/2015/04/23/12/System-Of-A-Down_BINARY_663814.jpg",
+    "https://img.europapress.es/fotoweb/fotonoticia_20200320182812_420.jpg"];
+    
+    let names = ["Daft Punk","Metallica","Adele","Gorillaz","Lindsey Sterling","Marshmello","SOAD","The Weeknd",]
+
+
+    for (let i = 0; i < names.length; i++) 
+    {
+        let artistPicture = document.createElement("div");
+        artistPicture.setAttribute("class", "artistPicture");
+        artistPicture.innerHTML = 
+        `
+            <img src="${images[i]}">
+            <h6 id="artistName">${names[i]}</h6>
+            <div class="miniBtn">
+            <i class="fas fa-play" id="playIcon"></i>
+            <i class="fas fa-star" id="starIcon"></i>
+            <i class="fas fa-caret-down" id="moreIcon"></i>
+
+        `;
+
+        artistGrid.appendChild(artistPicture);
+    }
+}
+
+function addSong()
+{
+    let musicSection = document.getElementById("musicSection");
+
+    for (let i = 0; i < 3; i++) 
+    {
+        let music = document.createElement("div");
+        music.setAttribute("class", "music");
+        music.innerHTML = 
+        `
+        <div class="overlay"></div>
+            <div class="musicContent">
+                <audio id="audio1">
+                  <source src="/Two Sugars.mp3" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+                <h2 id="musicTitle">Song Name</h2>
+                <h3 id="musicName">Band Name</h3>
+                <div class="progress">
+                  <input id="progressBar1" type="range" value="0" />
+                </div>
+                <div class="musicControls">
+                  <div class="musicColumn"><i id="redoMusic1" class="fa fa-redo-alt"  onclick="redoAudio(audio1)"></i></div>
+                  <div class="musicColumn"><i class="fa fa-step-backward"></i></div>
+                  <div class="musicColumn"><i id="playMusic1" class="fa fa-play play-btn fa-fw" onclick="playAudio(audio1,playMusic1,pauseMusic1,progressBar1,currentTime1)"></i></div>
+                  <div class="musicColumn"><i id="pauseMusic1" class="fa fa-pause pause-btn fa-fw" onclick="pauseAudio(audio1,playMusic1,pauseMusic1)" style="display: none;"></i></div>
+                  <div class="musicColumn"><i class="fa fa-step-forward"></i></div>
+                  <div class="musicColumn">
+                    <div class="musicVolume">
+                      <i class="fas fa-volume-up" id="volumeMusic1" onclick="volumeAudio(audio1,volumeMusic1,muteMusic1)"></i>
+                      <i class="fas fa-volume-mute" id="muteMusic1" onclick="muteAudio(audio1,volumeMusic1,muteMusic1)" style="display: none;"></i>
+                      <input type="range" name="volume" id="volume1" min="0" max="1" step="0.01" value="0.5" onclick="volumeLevel(audio1,volume1,volumeMusic1,muteMusic1)">
+                    </div>
+                  </div>
+                  <div class="musicTime">
+                    <p id="currentTime1">00:00</p>
+                    <p id="totalTime1">/00:00</p>
+                  </div>
+              </div>
+        </div>
+
+        `;
+
+        musicSection.appendChild(music);
+    }
+}
+
+function addFeactures()
+{
+    let elements = document.getElementById("elements");
+    let title = ["Listen","Share","Follow"];
+    let description = ["Listen and find music of the different generes",
+                "Share you playlist and upload you own tracks",
+                "Follow and know artist of the all world"];
+
+    for (let i = 0; i < 3; i++) 
+    {
+        let element = document.createElement("div");
+        element.setAttribute("class", "element");
+        element.innerHTML = 
+        `
+        <div class="card w-50">
+            <div class="card-body">
+                <h6>${title[i]}</h6>
+                <i class="fas fa-music"></i>
+                <p>${description[i]}</p>
+                <a href="#" class="btn btn-warning">Read More</a>
+            </div>
+        </div>
+
+        `;
+
+        elements.appendChild(element);
+    }
+}
+
+addArtist();
+addSong();
+addFeactures();
+
+
 // NAV VARIABLES
 const searchBar = document.getElementById("searchBar");
 const searchOptions = document.getElementById("searchOptions");
@@ -14,17 +130,6 @@ const formOut = document.getElementById("formOut");
 const googleBtn = document.getElementById("googleBtn");
 const microBtn = document.getElementById("microBtn");
 const appleBtn = document.getElementById("appleBtn");
-
-// MUSIC CONTROLS VARIABLES
-const audio = document.getElementById("audio1");
-let totalTime1 = document.getElementById("totalTime1");
-let totalTime2 = document.getElementById("totalTime2");
-let totalTime3 = document.getElementById("totalTime3");
-let tempVolume = 0, duration, seconds = 0, minutes = 0, intervalProgress;
-audio.ondurationchange = function() 
-{
-	duration = audio.duration;
-}
 
 //----------------- MOBIL NAV --------------------------
 const hamburgerButton = document.getElementById('hamburger');
@@ -65,7 +170,6 @@ document.addEventListener("click", function(e)
     } 
 }, false);
 
-
 //--------------- OPEN / CLOSE FORMS WINDOWS ---------------
 logIn.addEventListener("click", function()
 {
@@ -87,195 +191,3 @@ closeBtnForm.addEventListener("click", function()
     formLog.reset();
     
 });
-
-//--------------- LOGIN WITH FIREBASE ---------------
-formLog.addEventListener("submit", (e) =>
-{
-    e.preventDefault();
-    //window.open("user.html","_blank");
-
-    const emailLog = document.getElementById("emailLog").value;
-    const passLog = document.getElementById("passLog").value;
-
-    auth
-        .signInWithEmailAndPassword(emailLog, passLog)
-        .then(userCredential =>
-            {
-                console.log("INICIO SESION")
-                formLog.reset();
-                window.open("user.html","_self");
-            })
-})
-
-//--------------- SIGN UP WITH FIREBASE ---------------
-formSign.addEventListener("submit", (e) =>
-{
-    e.preventDefault();
-
-    const nameSign = document.getElementById("nameSign").value;
-    const emailSign = document.getElementById("emailSign").value;
-    const passSign = document.getElementById("passSign").value;
-    const repassSign = document.getElementById("repassSign").value;
-
-    if(repassSign == passSign)
-    {  
-        auth.createUserWithEmailAndPassword(emailSign, passSign)
-            .then(userCredential =>
-            {
-                console.log("SE REGISTRO");
-                
-                let user = firebase.auth().currentUser;
-                user.updateProfile({
-                displayName: nameSign,
-                }).then(function() {
-                // Update successful.
-                }).catch(function(error) {
-                // An error happened.
-                });
-                
-                formSign.reset();
-                window.open("user.html","_blank");
-            })
-    }
-})
-
-//--------------- LIST FOR AUTH STATE CHANGES ---------------
-auth.onAuthStateChanged((user) => 
-{
-  if (user) {
-    console.log("SESION INICIADA");
-
-  } else {
-    console.log("SESION CERRADA");
-  }
-});
-
-//--------------- LOGIN WITH GOOGLE ---------------
-googleBtn.addEventListener("click", (e) => 
-{
-  e.preventDefault();
-  formSign.reset();
-
-  const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithPopup(provider).then((result) => {
-    console.log(result);
-    console.log("google sign in");
-  })
-  .catch(err => {
-    console.log(err);
-  })
-});
-
-function playAudio(audio,playMusic,pauseMusic,progress,currentTime)
-{
-    audio.play();
-    intervalProgress = setInterval(audioTime, 1000, audio, progress, currentTime);
-    playMusic.style.display = "none";
-    pauseMusic.style.display = "block";
-    console.log("PLAY");
-}
-
-function pauseAudio(audio,playMusic,pauseMusic)
-{
-    audio.pause();
-    clearInterval(intervalProgress);
-    playMusic.style.display = "block";
-    pauseMusic.style.display = "none";
-    console.log("PAUSE");
-}
-
-function redoAudio(audio)
-{
-    audio.currentTime = 0;
-    if(audio.pause())
-        audio.pause();
-    else
-        audio.play();
-    
-    seconds = 0;
-    minutes = 0;
-    console.log("REDO");
-}
-
-function volumeAudio(audio,volumeMusic,muteMusic)
-{
-    volumeMusic.style.display = "none";
-    muteMusic.style.display = "block";
-    tempVolume = audio.volume;
-    audio.volume = 0;
-}
-
-function muteAudio(audio,volumeMusic,muteMusic)
-{
-    volumeMusic.style.display = "block";
-    muteMusic.style.display = "none";
-    audio.volume = tempVolume;
-}
-
-function volumeLevel(audio,volume,volumeMusic,muteMusic)
-{
-    volume.oninput = (e) =>
-    {
-        audio.volume = e.target.value;
-        volumeMusic.style.display = "block";
-        muteMusic.style.display = "none";
-    }
-}
-
-audio.addEventListener("loadedmetadata", function()
-{
-    audioDuration(totalTime1);
-    audioDuration(totalTime2);
-    audioDuration(totalTime3);
-})  
-
-function audioDuration(totalTime)
-{   console.log("Total Duration")
-    let totalMinutes = parseInt(audio.duration/60);
-    let totalSeconds = audio.duration - (totalMinutes*60);
-    let totalDuration = totalMinutes + ":" + parseInt(totalSeconds);
-
-    if(totalSeconds < 10)
-        totalDuration = totalMinutes + ":0" + parseInt(totalSeconds);
-    else
-        totalTime.innerHTML = "/0" + totalDuration;
-    if(totalMinutes > 9)
-        totalTime.innerHTML = "/" + totalDuration;
-    else
-        totalTime.innerHTML = "/0" + totalDuration;
-}
-
-function audioTime(audio, progress, current)
-{   
-	if(duration>0)
-	{
-        let porcentaje = audio.currentTime*100 / duration;
-
-        if(porcentaje < 100)
-            seconds++;
-        if(porcentaje == 100)
-        {
-          seconds = 0;
-          minutes = 0;
-          pauseMusic.style.display = "none";
-          playMusic.style.display = "block";
-        }
-
-        if(seconds < 10)
-        {
-            current.innerText = "0" + minutes + ":" + "0" + seconds;
-        }
-        else
-        {
-            current.innerText = "0" + minutes + ":" + seconds;
-        }
-        if(seconds >59)
-        {
-            seconds = 0;
-            minutes++;
-            current.innerText = "0" + minutes + ":" + "0" + seconds;
-        }
-
-        progress.style.width = parseInt(porcentaje) + "%";
-	}
-}
