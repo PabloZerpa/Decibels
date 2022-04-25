@@ -1,4 +1,4 @@
 # Decibels
 
 # Screenshot
-![](./css/screencapture-decibels.png)
+![](./css/decibels.png)
