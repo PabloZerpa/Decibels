@@ -29,39 +29,47 @@ html
 /* -------------------------------------------------- NAVEGATION --------------------------------------------------*/
 header
 {
+    background: #0B0D17;
     position: fixed;
-    width: 100vw;
+    width: 100%;
     height: 72px;
     z-index: 99;
 
+    #check
+    {
+        display: none;
+    }
+
+    .checkbtn
+    {
+        display: none;
+        font-size: 30px;
+        color: #fff;
+        padding-bottom: 20px;
+        cursor: pointer;
+    }
+
     nav
     {
-        position: absolute;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
         background: #0B0D17;
-        left: 0%;
-        right: 0%;
-        top: 0%;
-        bottom: 0%;
         box-shadow: 0px 0px 5px 0px #000;
 
         .logo
         {
-            position: absolute;
             width: 100px;
             height: 30px;
-            left: 165px;
-            top: calc(50% - 28px/2);
+            display: flex;
+            justify-content: center;
+            gap: 10px;
         }
 
         #logoName
         {
-            position: absolute;
             font-size: 24px;
             font-weight: bolder;
-            left: 40%;
-            right: 0%;
-            top: 10%;
-            bottom: 10%;
 
             a
             {
@@ -72,13 +80,8 @@ header
 
         #logoImg
         {
-            position: absolute;
             color: #EA741F;
             font-size: 30px;
-            left: 0%;
-            right: 73.33%;
-            top: 0%;
-            bottom: 0%;
         }
 
         .navLinks
@@ -88,13 +91,13 @@ header
             font-weight: bolder;
             display: flex;
             flex-direction: row;
-            justify-content: center;
+            justify-content: space-around;
             align-items: center;
             margin-top: 1%;
             
             li
             {
-                margin-right: 25px;
+                padding: 0 30px 0 0;
             }
         
             a
@@ -106,6 +109,7 @@ header
         /* -------------------------------------------------- SEARCH BAR --------------------------------------------------*/
         .search
         {
+            display: flex;
             position: relative;
             margin: 0 0 0 10px;
         }
@@ -132,8 +136,7 @@ header
                 }
             }
         }
-        
-        
+
         #searchBar
         {
             border-bottom-right-radius: 0px;
@@ -154,14 +157,6 @@ header
         
         .navBtn
         {
-            position: absolute;
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            padding: 0px;
-            right: 80px;
-            top: calc(50% - 40px/2);
-        
             button
             {
                 width: 90px;
@@ -181,10 +176,6 @@ header
             }
         }
 
-        .hamburger 
-        {
-            display: none;
-        }
     }
 }
 
@@ -295,8 +286,8 @@ header
         position: relative;
         width: 100vw;
         height: 700px;
-        /* border: 3px blue solid; */
         display: flex;
+        // flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 40px;
@@ -370,6 +361,7 @@ header
         position: relative;
         display: flex;
         flex-direction: column;
+        // flex-wrap: wrap;
         align-items: center;
         width: 100vw;
         height: 700px;
@@ -453,6 +445,7 @@ header
     {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
         width: 100vw;
         height: 850px;
@@ -583,7 +576,6 @@ header
                             font-size: 2em;
                             position: absolute;
                             left: 40%;
-                            /* color: #9b59b6; */
                         }
                 
                         i 
@@ -659,16 +651,16 @@ header
     {
         display: flex;
         flex-direction: column;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        gap: 50px;
         width: 100vw;
         height: 600px;
-        /* border: 3px green solid; */
 
         .elements
         {
             display: flex;
-            margin-top: 50px;
 
             .element
             {
@@ -742,7 +734,7 @@ footer
     {
         display: flex;
         background: #0B0D17;
-        width: 100vw;
+        width: 100%;
         height: 250px;
         gap: 10em;
         box-shadow: 0px 0px 5px 0px #000;
@@ -835,95 +827,50 @@ footer
     }
 }
 
-/* -------------------------------------------------- WIDTH 1240 PX --------------------------------------------------*/
-@media only screen and (min-width: 1240px)
-{
-    header
-    {
-        nav
-        {
-            
-            .logo
-            {
-                left: 100px;
-            }
-        
-            .navLinks
-            {
-                li
-                {
-                    margin-right: 12px;
-                }
-            }
-
-            .navBtn
-            {
-                right: 40px;
-            }
-        }
-    }
-}
-
-/* -------------------------------------------------- MOBIL NAVEGATION --------------------------------------------------*/
-@media only screen and (max-width: 1120px)
-{
-    header
-    {
-        nav
-        {
-            background-color: #0B0D17;
-                
-            .hamburger 
-            {
-                display: block;
-                width: 40px;
-                height: 40px;
-                border: 0;
-                background-color: #EA741F;
-                color: #FFFFFF;
-                font-size: 30px;
-                position: absolute;
-                right: 8%;
-                top: 20%;
-            }
-
-            .navLinks {
-                display: none;
-                background-color: #0B0D17;
-                
-                li
-                {
-                    margin-top: 10px;
-                }
-            }
-
-            .search
-            {
-                margin: 10px 0 15px 0;
-
-                #searchBar
-                {
-                    width: 200px;
-                }
-            }
-
-            .navBtn {
-
-                display: none;
-                right: 76%;
-                top: 197px;
-            }
-        
-            .logo {
-                display: none;
-            }
-        }
-    }
-}
-
 /* -------------------------------------------------- WIDTH 1024 PX --------------------------------------------------*/
 @media only screen and (max-width: 1024px)
 {
+    header
+    {
+        .checkbtn
+        {
+            display: block;
+            width: 40px;
+            height: 40px;
+            border: 0;
+            margin: 10px 0 0 20px;
+            color: #EA741F;
+            font-size: 30px;
+        }
+
+        #check:checked ~ nav
+        {
+            left: 0;
+        }
+
+        nav
+        {
+            flex-direction: column;
+            justify-content: center;
+            gap: 25px;
+
+            position: fixed;
+            width: 70%;
+            height: 100vh;
+            top: 80px;
+            left: -100%;
+            text-align: center;
+            transition: all .5;
+
+            .navLinks
+            {
+                flex-direction: column;
+                gap: 50px;
+            }
+        }
+
+    }
+    
     .content
     {
         #img1
@@ -1014,13 +961,12 @@ footer
 
         .feactures
         {
-            margin-top: 280px;
+            margin-top: 100px;
             margin-bottom: 20px;
     
             .elements
             {
-                flex-direction: column;
-                margin-top: 50px;
+                margin-top: 0px;
     
                 .element
                 {
@@ -1039,7 +985,7 @@ footer
             justify-content: center;
             align-items: center;
             background: #0B0D17;
-            width: 100vw;
+            width: 100%;
             height: 350px;
             gap: 1em;
 
@@ -1388,17 +1334,18 @@ footer
 
         .feactures
         {
-            margin-top: 280px;
-            margin-bottom: 100%;
+            margin-top: 100px;
+            margin-bottom: 500px;
+            flex-direction: row;
     
             .elements
             {
                 flex-direction: column;
-                margin-top: 50px;
+                margin-top: 10px;
     
                 .element
                 {
-                    margin-bottom: 20px;
+                    margin-bottom: 10px;
                 }
             }
         }
@@ -1413,7 +1360,7 @@ footer
             justify-content: center;
             align-items: center;
             background: #0B0D17;
-            width: 100vw;
+            width: 100%;
             height: 350px;
             gap: 1em;
 

@@ -131,27 +131,6 @@ const googleBtn = document.getElementById("googleBtn");
 const microBtn = document.getElementById("microBtn");
 const appleBtn = document.getElementById("appleBtn");
 
-//----------------- MOBIL NAV --------------------------
-const hamburgerButton = document.getElementById('hamburger');
-const navList = document.getElementById('navLinks');
-const navBtn = document.getElementById('navBtn');
-const nav = document.getElementById('nav');
-
-function toggleButton() 
-{
-    if(navList.style.display == "block")
-    {
-        navList.style.display = "none";
-        navBtn.style.display = "none";
-    }
-    else
-    {
-        navList.style.display = "block";
-        navBtn.style.display = "block";
-    }
-}
-hamburgerButton.addEventListener('click', toggleButton);
-
 //--------------- SEARCH BAR OPTIONS ---------------
 searchBar.addEventListener("click", function()
 {   

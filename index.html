@@ -24,9 +24,11 @@
     <!-------------------------- HEADER -------------------------->
     <header>
 
-        <!-------------------- NAVEGATION -------------------->
-        <nav id="nav">
-
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn"><i class="fas fa-bars"></i></label>
+      <!-------------------- NAVEGATION -------------------->
+      <nav class="nav" id="nav">
+        
         <!-------------------- LOGO -------------------->
         <div class="logo">
             <a href="index.html"><i id="logoImg" class="fas fa-headphones-alt"></i></a>
@@ -34,43 +36,41 @@
         </div>
 
         <!-------------------- NAV LINKS -------------------->
-          <ul class="navLinks" id="navLinks">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Discover</a></li>
-            <li><a href="#">Playlist</a></li>
-            <li><a href="#">Upload</a></li>
+        <ul class="navLinks" id="navLinks">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Discover</a></li>
+          <li><a href="#">Playlist</a></li>
+          <li><a href="#">Upload</a></li>
 
-            <div class="search">
-              <input class="form-control me-2" id="searchBar" type="search" placeholder="Search" aria-label="Search">
-              <ul id="searchOptions">
-                  <button style="background-color: rgb(248, 234, 109);"><i class="fas fa-bolt"></i> Electro</button>
-                  <button style="background-color: rgb(238, 152, 39);"><i class="fas fa-leaf"></i> Ambient</button>
-                  <button style="background-color: rgb(214, 29, 29);"><i class="fas fa-drum"></i> Rap</button>
-                  <button style="background-color: rgb(223, 55, 147);"><i class="fas fa-compact-disc"></i> Pop</button>
-                  <button style="background-color: rgb(184, 38, 228);"><i class="fas fa-guitar"></i> Rock</button>
-                  <button style="background-color: rgb(37, 126, 228);"><i class="fas fa-skull"></i> Metal</button>
-              </ul>
-            </div>
+          <div class="search">
+            <input class="form-control me-2" id="searchBar" type="search" placeholder="Search" aria-label="Search">
+
+            <ul id="searchOptions">
+              <button style="background-color: rgb(248, 234, 109);"><i class="fas fa-bolt"></i> Electro</button>
+              <button style="background-color: rgb(238, 152, 39);"><i class="fas fa-leaf"></i> Ambient</button>
+              <button style="background-color: rgb(214, 29, 29);"><i class="fas fa-drum"></i> Rap</button>
+              <button style="background-color: rgb(223, 55, 147);"><i class="fas fa-compact-disc"></i> Pop</button>
+              <button style="background-color: rgb(184, 38, 228);"><i class="fas fa-guitar"></i> Rock</button>
+              <button style="background-color: rgb(37, 126, 228);"><i class="fas fa-skull"></i> Metal</button>
+            </ul>
 
             <button class="btn btn-outline-warning" id="searchIcon" type="submit">
               <i class="fas fa-search" style="color: #fff;"></i>
             </button>
-
-          </ul>
+          </div>
+        </ul>
 
         <!-------------------- LOGIN BUTTONS -------------------->
         <div class="navBtn" id="navBtn">
-            <button type="button" class="btn btn-secondary" id="signUp" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-              Sign Up
-            </button>
-            <button type="button" class="btn btn-secondary" id="logIn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-              Log In
-            </button>
+          <button type="button" class="btn btn-secondary" id="signUp" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Sign Up
+          </button>
+          <button type="button" class="btn btn-secondary" id="logIn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Log In
+          </button>
         </div>
-
-        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
-
-        </nav>
+      </nav>
+      
     </header>
 
     <!-------------------------- MAIN CONTENT -------------------------->
@@ -213,32 +213,6 @@
         </div>
       </div>
     </footer>
-
-
-    <!-- FIREBASE -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-firestore.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-analytics.js"></script>
-
-    <script>
-      var firebaseConfig = {
-        apiKey: "AIzaSyCgIXWF93apX6no1WF2K9ArPbnM0ftIBzQ",
-        authDomain: "decibels-85767.firebaseapp.com",
-        projectId: "decibels-85767",
-        storageBucket: "decibels-85767.appspot.com",
-        messagingSenderId: "372223922058",
-        appId: "1:372223922058:web:ef8a61bb9c51651488c273",
-        measurementId: "G-VT9ZLDH1GS"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      const auth = firebase.auth();
-      const db = firebase.firestore();
-      firebase.analytics();
-    </script>
- -->
  
     <script src="./js/index.js"></script>
 
